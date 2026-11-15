@@ -242,6 +242,7 @@ video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
 .reveal{display:flex;gap:.5rem;flex-wrap:wrap}
 .ans{display:none;background:#E9FCEF;border:2px solid var(--green);border-radius:16px;padding:.6rem 1rem;font-weight:900;font-size:calc(1.15rem*var(--tx));line-height:1.5;animation:pop .4s}
 .ans.show{display:block}
+.ans~.calc{display:none}.ans.show~.calc{display:grid;animation:pop .4s}
 .fish{position:absolute;font-size:2.6rem;line-height:1;z-index:3;animation:swim 6s ease-in-out infinite}
 @keyframes swim{0%{left:var(--x0,4%);transform:translateY(0) scaleX(-1)}24%{transform:translateY(-7px) scaleX(-1)}48%{left:var(--x1,66%);transform:translateY(0) scaleX(-1)}52%{left:var(--x1,66%);transform:translateY(0) scaleX(1)}76%{transform:translateY(6px) scaleX(1)}100%{left:var(--x0,4%);transform:translateY(0) scaleX(1)}}
 .aq{position:absolute;inset:0;overflow:hidden;pointer-events:none}
@@ -1039,7 +1040,7 @@ $('#wishInput').addEventListener('keydown', e => { if (e.key === 'Enter') $('#wi
 // Xoá toàn bộ tiến độ (điểm, hoa đã hái, lời chúc, đồng hồ), giữ lại tên các nhóm
 function resetProgress() {
   if (!confirm('Xoá toàn bộ điểm, hoa đã hái và lời chúc để chơi lại từ đầu?')) return;
-  const names = S.teams.map(t => t.name); closeModal(); resetTimer();
+  const names = S.teams.map(t => t.name); closeModal(); resetTimer(); $$('.ans').forEach(a => a.classList.remove('show'));
   S = defState(); S.teams.forEach((t, i) => t.name = names[i]); save(); renderAll(); go(0);
 }
 $('#resetBtn').onclick = resetProgress;
