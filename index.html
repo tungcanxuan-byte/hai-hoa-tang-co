@@ -50,6 +50,9 @@ input{font-family:inherit;font-size:inherit}
 .steps button span{font-size:calc(.92rem*var(--tn))}
 @media (max-width:1180px){.steps button:not(.on){font-size:0;gap:0;padding:.42rem}}
 .tools{display:flex;gap:.4rem}
+.music{display:flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.7);border-radius:999px;padding-right:.6rem}
+.music input{width:5.5rem;accent-color:var(--purple)}
+.ibtn.off .ic{opacity:.35;filter:grayscale(1)}
 .ibtn{width:2.5rem;height:2.5rem;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:1.15rem;box-shadow:0 3px 10px rgba(139,92,246,.18);transition:.2s}
 .ibtn:hover{transform:translateY(-2px) scale(1.06)}
 
@@ -154,19 +157,11 @@ main{position:fixed;top:var(--top);bottom:var(--bottom);left:0;right:0;z-index:5
 .box.dim .face{opacity:.1}
 .hint{position:absolute;left:1rem;bottom:.8rem;font-weight:800;color:var(--muted);font-size:calc(.9rem*var(--tx));background:rgba(255,255,255,.8);padding:.3rem .7rem;border-radius:10px}
 
-/* ---------- Chặng 2: khối lập phương ---------- */
-.s2grid{flex:1;display:grid;grid-template-columns:1.25fr 1fr;gap:1rem;min-height:0}
 .info{padding:1rem 1.3rem;display:flex;flex-direction:column;gap:.8rem;overflow:auto}
-.formula{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;font-size:calc(1.7rem*var(--th))}
-.term{padding:.25rem .7rem;border-radius:14px;color:#fff;font-weight:900;cursor:pointer;transition:.2s;box-shadow:0 4px 0 rgba(0,0,0,.12)}
-.term:hover,.term.on{transform:translateY(-3px) scale(1.06)}
-.counts{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
-.counts div{border-radius:16px;padding:.6rem .3rem;text-align:center;color:#fff;font-weight:900}
-.counts b{display:block;font-family:var(--fh);font-size:calc(2rem*var(--th));line-height:1}
 .tip{background:#FFF7D6;border-radius:16px;padding:.8rem 1rem;font-weight:800;line-height:1.45;border:2px dashed #FFC93C}
 
-/* ---------- Chặng 3: vườn hoa ---------- */
-#s3{overflow:hidden}
+/* ---------- Chặng 2: vườn hoa ---------- */
+#s2{overflow:hidden}
 .garden{flex:1;position:relative;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(3,1fr);gap:.8rem;padding:.2rem .4rem 1rem;z-index:2;min-height:0}
 .hills{position:absolute;left:0;right:0;bottom:0;height:42%;z-index:0;pointer-events:none}
 .fl{position:relative;border-radius:22px;background:rgba(255,255,255,.72);box-shadow:0 8px 22px rgba(139,92,246,.14);border:3px solid #fff;
@@ -234,10 +229,7 @@ main{position:fixed;top:var(--top);bottom:var(--bottom);left:0;right:0;z-index:5
 @keyframes giftpop{from{transform:scale(0) rotate(-30deg)}}
 video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
 
-/* ---------- Chặng 4: vận dụng ---------- */
-.tabs{display:flex;gap:.5rem}
-.tabs button{padding:.55rem 1.1rem;border-radius:14px;font-weight:900;font-size:calc(1.05rem*var(--tx));background:#fff;box-shadow:0 3px 10px rgba(0,0,0,.06);color:var(--muted)}
-.tabs button.on{background:linear-gradient(90deg,var(--sky),var(--purple));color:#fff}
+/* ---------- Chặng 3: vận dụng ---------- */
 .s4grid{flex:1;display:grid;grid-template-columns:1fr 1.2fr;grid-template-rows:minmax(0,1fr);gap:1rem;min-height:0}
 .s4grid[hidden]{display:none}
 .slider{display:flex;align-items:center;gap:.8rem;font-weight:900;font-size:calc(1.15rem*var(--tx))}
@@ -250,12 +242,23 @@ video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
 .reveal{display:flex;gap:.5rem;flex-wrap:wrap}
 .ans{display:none;background:#E9FCEF;border:2px solid var(--green);border-radius:16px;padding:.6rem 1rem;font-weight:900;font-size:calc(1.15rem*var(--tx));line-height:1.5;animation:pop .4s}
 .ans.show{display:block}
-.fish{position:absolute;font-size:2.6rem;animation:swim 6s ease-in-out infinite;filter:none}
-@keyframes swim{0%{left:8%;transform:scaleX(-1)}48%{left:62%;transform:scaleX(-1)}52%{left:62%;transform:scaleX(1)}100%{left:8%;transform:scaleX(1)}}
+.fish{position:absolute;font-size:2.6rem;line-height:1;z-index:3;animation:swim 6s ease-in-out infinite}
+@keyframes swim{0%{left:var(--x0,4%);transform:translateY(0) scaleX(-1)}24%{transform:translateY(-7px) scaleX(-1)}48%{left:var(--x1,66%);transform:translateY(0) scaleX(-1)}52%{left:var(--x1,66%);transform:translateY(0) scaleX(1)}76%{transform:translateY(6px) scaleX(1)}100%{left:var(--x0,4%);transform:translateY(0) scaleX(1)}}
+.aq{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.aq .sand{position:absolute;left:0;right:0;bottom:0;height:13%;background:linear-gradient(180deg,#FDE68A,#F59E0B);border-radius:40% 55% 0 0/18px 22px 0 0;z-index:2}
+.aq .peb{position:absolute;bottom:2%;border-radius:50%;z-index:2}
+.aq .weed{position:absolute;bottom:6%;transform-origin:50% 100%;animation:sway 4s ease-in-out infinite alternate;z-index:1}
+.aq .weed.fg{z-index:4}
+.aq .weed svg{display:block;width:100%;height:100%;overflow:visible}
+@keyframes sway{from{transform:rotate(-7deg) skewX(-4deg)}to{transform:rotate(7deg) skewX(4deg)}}
+.aq .bub{position:absolute;bottom:8%;border-radius:50%;border:1.5px solid rgba(255,255,255,.9);background:rgba(255,255,255,.25);z-index:3;animation:rise 4s ease-in infinite}
+@keyframes rise{0%{transform:translate(0,0);opacity:0}10%{opacity:1}50%{transform:translate(5px,-45cqh)}90%{opacity:.9}100%{transform:translate(-4px,-88cqh);opacity:0}}
+.aq .ray{position:absolute;top:-10%;width:18%;height:120%;background:linear-gradient(180deg,rgba(255,255,255,.28),transparent 70%);transform:skewX(-12deg);animation:shimmer 6s ease-in-out infinite alternate}
+@keyframes shimmer{from{opacity:.2}to{opacity:.7}}
 .dimlbl{position:absolute;right:1rem;top:1rem;display:flex;flex-direction:column;gap:.35rem;font-weight:900}
 .dimlbl span{background:#fff;border-radius:10px;padding:.25rem .7rem;box-shadow:0 3px 10px rgba(0,0,0,.08)}
 
-/* ---------- Chặng 5: tri ân ---------- */
+/* ---------- Chặng 4: tri ân ---------- */
 .s5grid{flex:1;display:grid;grid-template-columns:1fr 1.15fr .95fr;grid-template-rows:minmax(0,1fr);gap:1rem;min-height:0}
 .bouq{position:relative;display:flex;flex-direction:column;align-items:center;padding:.6rem;min-height:0;overflow:hidden}
 .bouq svg:not(.ic){flex:1;width:100%;min-height:0}
@@ -284,7 +287,7 @@ video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
 .sprite{position:absolute;width:0;height:0;overflow:hidden}
 .ic{width:1.25em;height:1.25em;vertical-align:-.28em;flex:none;overflow:visible}
 .btn .ic{width:1.35em;height:1.35em}
-.btn.pri .ic,.btn.vio .ic,.btn.mint .ic,.vbtn .ic,.tabs button.on .ic{filter:drop-shadow(0 1px 0 rgba(0,0,0,.12))}
+.btn.pri .ic,.btn.vio .ic,.btn.mint .ic,.vbtn .ic{filter:drop-shadow(0 1px 0 rgba(0,0,0,.12))}
 .ibtn .ic{width:1.45rem;height:1.45rem}
 .xbtn{display:grid;place-items:center}.xbtn .ic{width:1.3rem;height:1.3rem}
 .fish .ic,.gift .ic,.crown .ic,.flyflower .ic{width:1em;height:1em;vertical-align:0}
@@ -298,7 +301,7 @@ video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
 .dedic{display:inline-flex;align-items:center;gap:.7rem;margin:.2rem 0 .6rem;padding:.35rem 1.2rem .35rem .4rem;border-radius:99px;background:rgba(255,255,255,.85);box-shadow:var(--shadow)}
 .dedic .ic.av{width:3.4rem;height:3.4rem;vertical-align:0}
 .dedic span{font-weight:900;color:var(--muted);font-size:calc(1.05rem*var(--tx));line-height:1.05}
-.dedic b{display:block;font-family:'Dancing Script',cursive;font-size:calc(2.5rem*var(--th));color:var(--pink);line-height:1.05}
+.dedic b{display:block;font-family:'Dancing Script',cursive;font-size:calc(2.2rem*var(--th));color:var(--pink);line-height:1.05;white-space:nowrap}
 /* Bảng vàng: vương miện nằm trên cột, không đè tiêu đề */
 .podium{height:auto;min-height:9rem;padding-top:2.2rem;flex:none}
 .podium .pc{position:relative}
@@ -306,7 +309,7 @@ video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
 </style>
 </head>
 <body>
-<svg class="sprite" aria-hidden="true"><defs><linearGradient id="g-pink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF85BF"/><stop offset="1" stop-color="#FF4F9A"/></linearGradient><linearGradient id="g-petal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF4F9A"/><stop offset="1" stop-color="#FFD1E6"/></linearGradient><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE27A"/><stop offset="1" stop-color="#FFB703"/></linearGradient><linearGradient id="g-violet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A78BFA"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs><symbol id="i-sakura" viewBox="0 0 24 24"><g transform="rotate(0 12 12)"><path d="M12 12C8.6 10.4 8.4 5.2 10.3 2.9L12 4.6l1.7-1.7c1.9 2.3 1.7 7.5-1.7 9.1z" fill="url(#g-petal)" stroke="#fff" stroke-width=".7"/></g><g transform="rotate(72 12 12)"><path d="M12 12C8.6 10.4 8.4 5.2 10.3 2.9L12 4.6l1.7-1.7c1.9 2.3 1.7 7.5-1.7 9.1z" fill="url(#g-petal)" stroke="#fff" stroke-width=".7"/></g><g transform="rotate(144 12 12)"><path d="M12 12C8.6 10.4 8.4 5.2 10.3 2.9L12 4.6l1.7-1.7c1.9 2.3 1.7 7.5-1.7 9.1z" fill="url(#g-petal)" stroke="#fff" stroke-width=".7"/></g><g transform="rotate(216 12 12)"><path d="M12 12C8.6 10.4 8.4 5.2 10.3 2.9L12 4.6l1.7-1.7c1.9 2.3 1.7 7.5-1.7 9.1z" fill="url(#g-petal)" stroke="#fff" stroke-width=".7"/></g><g transform="rotate(288 12 12)"><path d="M12 12C8.6 10.4 8.4 5.2 10.3 2.9L12 4.6l1.7-1.7c1.9 2.3 1.7 7.5-1.7 9.1z" fill="url(#g-petal)" stroke="#fff" stroke-width=".7"/></g><circle cx="12" cy="12" r="2.4" fill="#FFC93C"/><circle cx="12" cy="12" r="1" fill="#FF8A3D"/></symbol><symbol id="i-daisy" viewBox="0 0 24 24"><g transform="rotate(0 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(45 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(90 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(135 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(180 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(225 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(270 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(315 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><circle cx="12" cy="12" r="3.3" fill="#FF8A3D"/><circle cx="11" cy="11" r="1" fill="#FFC27A"/></symbol><symbol id="i-tulip" viewBox="0 0 24 24"><path d="M12 13v8.5" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/><path d="M12 20c-3-.3-5.2-2.4-5.8-5.2 2.8.2 4.8 2 5.8 5.2z" fill="#22C55E"/><path d="M6.5 5.5 9.5 8 12 3.8 14.5 8l3-2.5V10a5.5 5.5 0 0 1-11 0z" fill="url(#g-pink)"/><path d="M12 3.8 14.5 8l3-2.5V10a5.5 5.5 0 0 1-5.5 5.5z" fill="#C2185B" opacity=".25"/></symbol><symbol id="i-bouquet" viewBox="0 0 24 24"><path d="M9 11 5.2 6.6M15 11l3.8-4.4" stroke="#22C55E" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="5.4" cy="10" rx="2.6" ry="1.2" transform="rotate(-35 5.4 10)" fill="#22C55E"/><ellipse cx="18.6" cy="10" rx="2.6" ry="1.2" transform="rotate(35 18.6 10)" fill="#16A34A"/><circle cx="7.6" cy="7.6" r="3" fill="#FF4F9A"/><circle cx="7.6" cy="7.6" r="1" fill="#FFD1E6"/><circle cx="16.4" cy="7.6" r="3" fill="#FFC93C"/><circle cx="16.4" cy="7.6" r="1" fill="#FF8A3D"/><circle cx="12" cy="5" r="3.2" fill="#8B5CF6"/><circle cx="12" cy="5" r="1.1" fill="#EDE5FF"/><path d="M5.8 10.5h12.4l-4.3 11.2h-3.8z" fill="#FFD1E6" stroke="#FF4F9A" stroke-linejoin="round"/><path d="M8.6 15.4h6.8" stroke="#FF4F9A" stroke-width="1.8"/><path d="M12 15.4l-2.3 2.3M12 15.4l2.3 2.3" stroke="#FF4F9A" stroke-width="1.3" stroke-linecap="round"/></symbol><symbol id="i-cube" viewBox="0 0 24 24"><g stroke="#fff" stroke-width=".9" stroke-linejoin="round"><path d="M12 2.5 20.5 7 12 11.5 3.5 7z" fill="#C4B5FD"/><path d="M3.5 7 12 11.5v10L3.5 17z" fill="#8B5CF6"/><path d="M12 11.5 20.5 7v10L12 21.5z" fill="#6D3FD8"/></g><path d="M8 6.2 11 7.8" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".8"/></symbol><symbol id="i-fish" viewBox="0 0 24 24"><path d="M16.8 12l4.7-5.2v10.4z" fill="#FF6B2C"/><path d="M8.6 7.2 11.6 3.6l2.6 4.6z" fill="#38BDF8"/><path d="M2.5 12C5 7 11.5 5.6 17.5 12 11.5 18.4 5 17 2.5 12z" fill="#FFA94D"/><path d="M8.6 7.6c-1 3-1 5.8 0 8.8M12.4 8.4c-.7 2.4-.7 4.8 0 7.2" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="5.7" cy="11.3" r="1.1" fill="#3A1F5D"/></symbol><symbol id="i-fish2" viewBox="0 0 24 24"><path d="M16.8 12l4.7-5.2v10.4z" fill="#0284C7"/><path d="M8.6 7.2 11.6 3.6l2.6 4.6z" fill="#FFC93C"/><path d="M2.5 12C5 7 11.5 5.6 17.5 12 11.5 18.4 5 17 2.5 12z" fill="#38BDF8"/><path d="M8.6 7.6c-1 3-1 5.8 0 8.8M12.4 8.4c-.7 2.4-.7 4.8 0 7.2" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="5.7" cy="11.3" r="1.1" fill="#3A1F5D"/></symbol><symbol id="i-mic" viewBox="0 0 24 24"><path d="M6 11a6 6 0 0 0 12 0M12 17v4M9 21.2h6" stroke="#FF4F9A" stroke-width="1.8" fill="none" stroke-linecap="round"/><rect x="8.5" y="2.5" width="7" height="11" rx="3.5" fill="url(#g-violet)"/><path d="M8.5 7.5h7M8.5 10h7" stroke="#DDD6FE" stroke-width="1"/></symbol><symbol id="i-dice" viewBox="0 0 24 24"><g transform="rotate(-8 12 12)"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" fill="#fff" stroke="#FF4F9A" stroke-width="1.8"/><g fill="#8B5CF6"><circle cx="8" cy="8" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="16" cy="16" r="1.5"/><circle cx="16" cy="8" r="1.5"/><circle cx="8" cy="16" r="1.5"/></g></g></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.6l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17l-5.6 3 1.1-6.3L2.9 9.3l6.3-.9z" fill="url(#g-gold)" stroke="#E09B00" stroke-linejoin="round"/><path d="M9.6 9.6l1.3-2.6" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></symbol><symbol id="i-bulb" viewBox="0 0 24 24"><path d="M12 2.5a6.5 6.5 0 0 0-3.8 11.8c.6.5 1 1.2 1 2v.7h5.6v-.7c0-.8.4-1.5 1-2A6.5 6.5 0 0 0 12 2.5z" fill="url(#g-gold)" stroke="#E09B00"/><path d="M9.4 19h5.2M10 21.3h4" stroke="#8B7FA8" stroke-width="1.8" stroke-linecap="round"/><path d="M9.6 7.2a3.4 3.4 0 0 1 3.4-1.4" stroke="#fff" stroke-width="1.3" stroke-linecap="round" fill="none"/></symbol><symbol id="i-mouse" viewBox="0 0 24 24"><path d="M3.5 13.5c.5 4.3 4 7.5 8.5 7.5s8-3.2 8.5-7.5" stroke="#FF4F9A" stroke-width="1.7" fill="none" stroke-linecap="round"/><path d="M18.4 15.2l2.1-1.9 1.9 2.2" stroke="#FF4F9A" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="7.8" y="2.5" width="8.4" height="14" rx="4.2" fill="#fff" stroke="#8B5CF6" stroke-width="1.7"/><path d="M12 2.5v5" stroke="#8B5CF6" stroke-width="1.3"/><rect x="11" y="4.4" width="2" height="2.8" rx="1" fill="#FF4F9A"/></symbol><symbol id="i-point" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="url(#g-pink)"/><path d="M7.5 12h8.5m-3.5-4 4 4-4 4" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-burst" viewBox="0 0 24 24"><path d="M12 1.8l2 5.4 5.3-2.5-2.4 5.3 5.3 2-5.3 2 2.4 5.3-5.3-2.5-2 5.4-2-5.4-5.3 2.5 2.4-5.3L1.8 12l5.3-2-2.4-5.3 5.3 2.5z" fill="#FF8A3D"/><path d="M12 1.8l2 5.4 5.3-2.5-2.4 5.3 5.3 2-5.3 2 2.4 5.3-5.3-2.5-2 5.4-2-5.4-5.3 2.5 2.4-5.3L1.8 12l5.3-2-2.4-5.3 5.3 2.5z" transform="translate(12 12) scale(.55) translate(-12 -12)" fill="#FFC93C"/></symbol><symbol id="i-scroll" viewBox="0 0 24 24"><path d="M5.5 5h11.5v13.5A2.5 2.5 0 0 1 14.5 21H6.5" fill="#FFF3D1" stroke="#E0A526" stroke-width="1.3"/><rect x="3" y="3" width="15" height="4" rx="2" fill="#FFD27A" stroke="#E0A526" stroke-width="1.3"/><path d="M6.5 21a2.5 2.5 0 0 1 0-5H12v2.5a2.5 2.5 0 0 0 2.5 2.5z" fill="#FFD27A" stroke="#E0A526" stroke-width="1.3" stroke-linejoin="round"/><path d="M8.5 10h6M8.5 13h4.5" stroke="#C98A10" stroke-width="1.3" stroke-linecap="round"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 5.5H4.5a3 3 0 0 0 3.2 4.6M17 5.5h2.5a3 3 0 0 1-3.2 4.6" stroke="#E09B00" stroke-width="1.6" fill="none"/><path d="M7 3.5h10v5a5 5 0 0 1-10 0z" fill="url(#g-gold)" stroke="#E09B00"/><path d="M10.5 13.2h3l.6 3.8h-4.2z" fill="#FFB800"/><rect x="7.5" y="17" width="9" height="3.8" rx="1.2" fill="url(#g-violet)"/><path d="M12 5l.8 1.6 1.7.2-1.3 1.2.3 1.7-1.5-.8-1.5.8.3-1.7-1.3-1.2 1.7-.2z" fill="#fff"/></symbol><symbol id="i-letter" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="14" rx="2.5" fill="#FFE0EE" stroke="#FF4F9A" stroke-width="1.4"/><path d="M3.2 7.2 12 13l8.8-5.8" stroke="#FF4F9A" stroke-width="1.4" fill="none" stroke-linejoin="round"/><path d="M12 21s-8-5.2-8-10.6A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 8 2.8C20 15.8 12 21 12 21z" fill="#FF4F9A" transform="translate(7.6 9.4) scale(.37)"/></symbol><symbol id="i-hearts" viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-10.6A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 8 2.8C20 15.8 12 21 12 21z" fill="url(#g-pink)" transform="translate(-1.6 1.6) scale(.86)"/><path d="M12 21s-8-5.2-8-10.6A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 8 2.8C20 15.8 12 21 12 21z" fill="#B79CFF" transform="translate(12.4 -1.4) scale(.46)"/></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="11" cy="13" r="8.5" fill="#fff" stroke="#FF4F9A" stroke-width="2"/><circle cx="11" cy="13" r="5.2" fill="#FF4F9A"/><circle cx="11" cy="13" r="2.2" fill="#fff"/><path d="M11 13l8.5-8.5" stroke="#8B5CF6" stroke-width="1.8" stroke-linecap="round"/><path d="M17 3.6l3-1.1 1.1 1.1-1.1 3-1.9-.3z" fill="#8B5CF6"/></symbol><symbol id="i-books" viewBox="0 0 24 24"><rect x="3" y="15.6" width="18" height="4.6" rx="1.2" fill="url(#g-violet)"/><path d="M16.5 17.9h3" stroke="#fff" stroke-width="1.2"/><g transform="rotate(-3 12 12.8)"><rect x="4.5" y="10.6" width="15" height="4.4" rx="1.2" fill="#FF4F9A"/><path d="M6 12.8h3" stroke="#fff" stroke-width="1.2"/></g><g transform="rotate(4 11.5 7.8)"><rect x="5.5" y="5.6" width="12.5" height="4.4" rx="1.2" fill="#14B8A6"/><path d="M14.5 7.8h2.4" stroke="#fff" stroke-width="1.2"/></g></symbol><symbol id="i-clover" viewBox="0 0 24 24"><path d="M12 12c1.5 3 4 5.6 6.5 8.4" stroke="#16A34A" stroke-width="1.7" fill="none" stroke-linecap="round"/><g transform="rotate(0 12 12)"><path d="M12 12C9 10.5 8.2 6.8 10 5.6c1-.7 2 0 2 1 0-1 1-1.7 2-1 1.8 1.2 1 4.9-2 6.4z" fill="#22C55E" stroke="#fff" stroke-width=".6"/><path d="M12 11.6V7.4" stroke="#86EFAC" stroke-width=".8" stroke-linecap="round"/></g><g transform="rotate(90 12 12)"><path d="M12 12C9 10.5 8.2 6.8 10 5.6c1-.7 2 0 2 1 0-1 1-1.7 2-1 1.8 1.2 1 4.9-2 6.4z" fill="#22C55E" stroke="#fff" stroke-width=".6"/><path d="M12 11.6V7.4" stroke="#86EFAC" stroke-width=".8" stroke-linecap="round"/></g><g transform="rotate(180 12 12)"><path d="M12 12C9 10.5 8.2 6.8 10 5.6c1-.7 2 0 2 1 0-1 1-1.7 2-1 1.8 1.2 1 4.9-2 6.4z" fill="#22C55E" stroke="#fff" stroke-width=".6"/><path d="M12 11.6V7.4" stroke="#86EFAC" stroke-width=".8" stroke-linecap="round"/></g><g transform="rotate(270 12 12)"><path d="M12 12C9 10.5 8.2 6.8 10 5.6c1-.7 2 0 2 1 0-1 1-1.7 2-1 1.8 1.2 1 4.9-2 6.4z" fill="#22C55E" stroke="#fff" stroke-width=".6"/><path d="M12 11.6V7.4" stroke="#86EFAC" stroke-width=".8" stroke-linecap="round"/></g></symbol><symbol id="i-gift" viewBox="0 0 24 24"><rect x="3.5" y="10" width="17" height="11" rx="1.8" fill="url(#g-pink)"/><rect x="2.5" y="7" width="19" height="4.2" rx="1.4" fill="#E83E8C"/><rect x="10.5" y="7" width="3" height="14" fill="#FFC93C"/><path d="M12 7C10 3.6 6.4 3.6 6.6 5.6 6.8 7 9.6 7 12 7zm0 0c2-3.4 5.6-3.4 5.4-1.4C17.2 7 14.4 7 12 7z" fill="none" stroke="#FFC93C" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="i-party" viewBox="0 0 24 24"><path d="M3 21l4.8-12.6 7.8 7.8z" fill="url(#g-gold)" stroke="#E09B00" stroke-linejoin="round"/><path d="M5.3 15.1l3.6 3.6M6.8 11.2l5.9 5.9" stroke="#FF4F9A" stroke-width="1.4"/><path d="M13 9c1-2.5 3-3 4.5-2.5M15 13c2-.8 3.8 0 4.5 1.3" stroke="#38BDF8" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="17.5" cy="4.6" r="1.3" fill="#8B5CF6"/><circle cx="20.4" cy="10.4" r="1.1" fill="#FF4F9A"/><circle cx="11" cy="3.6" r="1" fill="#14B8A6"/><rect x="19.4" y="2" width="2" height="2" rx=".4" fill="#FFC93C" transform="rotate(20 20.4 3)"/></symbol><symbol id="i-grin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="url(#g-gold)" stroke="#E09B00"/><circle cx="9" cy="10" r="1.2" fill="#3A1F5D"/><circle cx="15" cy="10" r="1.2" fill="#3A1F5D"/><path d="M7.5 13.3h9a4.5 4.5 0 0 1-9 0z" fill="#3A1F5D"/><circle cx="6.8" cy="13" r="1.2" fill="#FF8CC6" opacity=".6"/><circle cx="17.2" cy="13" r="1.2" fill="#FF8CC6" opacity=".6"/></symbol><symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="url(#g-gold)" stroke="#E09B00"/><circle cx="9" cy="10" r="1.2" fill="#3A1F5D"/><circle cx="15" cy="10" r="1.2" fill="#3A1F5D"/><path d="M8.5 14.3a4.2 4.2 0 0 0 7 0" stroke="#3A1F5D" stroke-width="1.6" fill="none" stroke-linecap="round"/></symbol><symbol id="i-meh" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="url(#g-gold)" stroke="#E09B00"/><circle cx="9" cy="10" r="1.2" fill="#3A1F5D"/><circle cx="15" cy="10" r="1.2" fill="#3A1F5D"/><path d="M9 15h6" stroke="#3A1F5D" stroke-width="1.6" stroke-linecap="round"/></symbol><symbol id="i-think" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="url(#g-gold)" stroke="#E09B00"/><circle cx="9" cy="10" r="1.2" fill="#3A1F5D"/><circle cx="15" cy="10" r="1.2" fill="#3A1F5D"/><path d="M9.3 15.6c1.6-.9 3.6-.8 5.2.3M13.6 7.4l2.8-.8" stroke="#3A1F5D" stroke-width="1.5" fill="none" stroke-linecap="round"/></symbol><symbol id="i-bookopen" viewBox="0 0 24 24"><path d="M12 6.5C9.5 4.8 6 4.5 2.5 5.2v13.3c3.5-.7 7-.4 9.5 1.3zM12 6.5c2.5-1.7 6-2 9.5-1.3v13.3c-3.5-.7-7-.4-9.5 1.3z" fill="#E7FBEF" stroke="#14B8A6" stroke-width="1.4" stroke-linejoin="round"/><path d="M5 9c1.6-.2 3.2 0 4.6.6M5 12c1.6-.2 3.2 0 4.6.6M14.4 9.6c1.4-.6 3-.8 4.6-.6M14.4 12.6c1.4-.6 3-.8 4.6-.6" stroke="#2DD4BF" stroke-width="1.2" stroke-linecap="round"/></symbol><symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 8l4.5 4L12 4.5 16.5 12 21 8l-2 10.5H5z" fill="url(#g-gold)" stroke="#E09B00" stroke-linejoin="round"/><rect x="5" y="18.4" width="14" height="2.8" rx="1" fill="#FFB800" stroke="#E09B00"/><circle cx="12" cy="14.4" r="1.5" fill="#FF4F9A"/><circle cx="8" cy="15.1" r="1.1" fill="#8B5CF6"/><circle cx="16" cy="15.1" r="1.1" fill="#14B8A6"/><circle cx="3" cy="8" r="1.3" fill="#FFC93C"/><circle cx="12" cy="4.5" r="1.3" fill="#FFC93C"/><circle cx="21" cy="8" r="1.3" fill="#FFC93C"/></symbol><symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0 0 18c1.4 0 2-.9 2-1.8 0-1.3-1.2-1.6-1.2-2.8 0-1 .8-1.6 1.8-1.6H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z" fill="#FFE8C7" stroke="#E0A526" stroke-width="1.2"/><circle cx="7.4" cy="11.6" r="1.6" fill="#FF4F9A"/><circle cx="9.4" cy="7" r="1.6" fill="#8B5CF6"/><circle cx="14.4" cy="6.8" r="1.6" fill="#14B8A6"/><circle cx="17.6" cy="10.6" r="1.6" fill="#38BDF8"/></symbol><symbol id="i-magnet" viewBox="0 0 24 24"><path d="M5 3.5h4.2v8a2.8 2.8 0 0 0 5.6 0v-8H19v8a7 7 0 0 1-14 0z" fill="#EF4444"/><path d="M5 3.5h4.2v3.6H5zM14.8 3.5H19v3.6h-4.2z" fill="#E5E7EB"/><path d="M7 11.5a5 5 0 0 0 1.6 3.7" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".6" fill="none"/></symbol><symbol id="i-warn" viewBox="0 0 24 24"><path d="M10.3 3.7a2 2 0 0 1 3.4 0l8 13.8A2 2 0 0 1 20 20.5H4a2 2 0 0 1-1.7-3z" fill="url(#g-gold)" stroke="#E09B00"/><path d="M12 9v5" stroke="#3A1F5D" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="17" r="1.3" fill="#3A1F5D"/></symbol><symbol id="i-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#22C55E"/><path d="M7.5 12.3l3 3 6-6.3" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="8" fill="#fff" stroke="#FF4F9A" stroke-width="2"/><path d="M12 13.5V9.2" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round"/><path d="M12 13.5l3 2" stroke="#FF4F9A" stroke-width="1.6" stroke-linecap="round"/><path d="M9.5 2.6h5M12 2.6v2.9M18.6 5.6l1.4 1.4" stroke="#8B5CF6" stroke-width="1.8" stroke-linecap="round"/></symbol><symbol id="i-alarm" viewBox="0 0 24 24"><path d="M4.5 4.5 2.8 6.2M19.5 4.5l1.7 1.7M7 20l-1.3 1.6M17 20l1.3 1.6" stroke="#EF4444" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="13" r="8" fill="#fff" stroke="#EF4444" stroke-width="2"/><path d="M12 8.6V13l2.8 2" stroke="#3A1F5D" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="#FFD43B"/><path d="M19 2.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z" fill="#FF8CC6"/></symbol><symbol id="i-teacher" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11.5" fill="#FFE4F2"/><path d="M12 3.6c-4.6 0-7 3.4-7 7.6v7.6c0 .9.8 1.4 1.6 1.1l1.6-.6h7.6l1.6.6c.8.3 1.6-.2 1.6-1.1v-7.6c0-4.2-2.4-7.6-7-7.6z" fill="#4A2C6B"/><path d="M5.2 22.6c.9-3.3 3.6-4.9 6.8-4.9s5.9 1.6 6.8 4.9A11.5 11.5 0 0 1 5.2 22.6z" fill="#FF4F9A"/><path d="M10.6 17.8 12 20l1.4-2.2" stroke="#fff" stroke-width="1" fill="none"/><ellipse cx="12" cy="12.4" rx="4.5" ry="5.1" fill="#FFD9C2"/><path d="M7.4 11.4c.4-3.4 2.4-5.1 4.6-5.1 2.6 0 4.2 1.6 4.6 4.3-2.6-.1-5-1.2-6.4-3-.4 1.6-1.4 3-2.8 3.8z" fill="#4A2C6B"/><circle cx="10.2" cy="12.6" r=".7" fill="#3A1F5D"/><circle cx="13.8" cy="12.6" r=".7" fill="#3A1F5D"/><circle cx="9.1" cy="14.2" r=".8" fill="#FF8CC6" opacity=".7"/><circle cx="14.9" cy="14.2" r=".8" fill="#FF8CC6" opacity=".7"/><path d="M10.5 15c.9.8 2.1.8 3 0" stroke="#D6336C" stroke-width=".9" fill="none" stroke-linecap="round"/><g transform="translate(16.6 6.6)"><circle cy="-1.3" r="1.1" fill="#FFC93C"/><circle cx="1.25" cy="-.4" r="1.1" fill="#FFC93C"/><circle cx=".8" cy="1.1" r="1.1" fill="#FFC93C"/><circle cx="-.8" cy="1.1" r="1.1" fill="#FFC93C"/><circle cx="-1.25" cy="-.4" r="1.1" fill="#FFC93C"/><circle r=".8" fill="#FF4F9A"/></g></symbol><symbol id="i-sound" viewBox="0 0 24 24"><path d="M3.5 9.3h3.4L12 5.2v13.6l-5.1-4.1H3.5z" fill="url(#g-violet)" stroke="url(#g-violet)" stroke-width="1.2" stroke-linejoin="round"/><path d="M15.3 9a4 4 0 0 1 0 6M17.9 6.4a7.6 7.6 0 0 1 0 11.2" stroke="#FF4F9A" stroke-width="2" fill="none" stroke-linecap="round"/></symbol><symbol id="i-mute" viewBox="0 0 24 24"><path d="M3.5 9.3h3.4L12 5.2v13.6l-5.1-4.1H3.5z" fill="url(#g-violet)" stroke="url(#g-violet)" stroke-width="1.2" stroke-linejoin="round"/><path d="M15.5 9.5l5 5m0-5-5 5" stroke="#FF4F9A" stroke-width="2" stroke-linecap="round"/></symbol><symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V5.5A1.5 1.5 0 0 1 5.5 4H9M15 4h3.5A1.5 1.5 0 0 1 20 5.5V9M20 15v3.5a1.5 1.5 0 0 1-1.5 1.5H15M9 20H5.5A1.5 1.5 0 0 1 4 18.5V15" stroke="#8B5CF6" stroke-width="2.2" fill="none" stroke-linecap="round"/><rect x="8.5" y="8.5" width="7" height="7" rx="1.8" fill="url(#g-pink)"/></symbol><symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="url(#g-violet)"/><path d="M9.3 9.4a2.8 2.8 0 1 1 3.9 2.6c-.8.4-1.2 1-1.2 1.8v.6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1.3" fill="#fff"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4.5 12h14m-5.5-6 6 6-6 6" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.9l10.6-6.8a1 1 0 0 0 0-1.7L9.5 4.3A1 1 0 0 0 8 5.2z" fill="currentColor"/></symbol><symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4.5" width="4.2" height="15" rx="1.4" fill="currentColor"/><rect x="13.8" y="4.5" width="4.2" height="15" rx="1.4" fill="currentColor"/></symbol><symbol id="i-reset" viewBox="0 0 24 24"><path d="M4.6 12a7.4 7.4 0 1 0 2.2-5.3M4.2 3.6v4.3h4.3" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11m0-11-11 11" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol></svg>
+<svg class="sprite" aria-hidden="true"><defs><linearGradient id="g-pink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF85BF"/><stop offset="1" stop-color="#FF4F9A"/></linearGradient><linearGradient id="g-petal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF4F9A"/><stop offset="1" stop-color="#FFD1E6"/></linearGradient><linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE27A"/><stop offset="1" stop-color="#FFB703"/></linearGradient><linearGradient id="g-violet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A78BFA"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs><symbol id="i-sakura" viewBox="0 0 24 24"><g transform="rotate(0 12 12)"><path d="M12 12C8.6 10.4 8.4 5.2 10.3 2.9L12 4.6l1.7-1.7c1.9 2.3 1.7 7.5-1.7 9.1z" fill="url(#g-petal)" stroke="#fff" stroke-width=".7"/></g><g transform="rotate(72 12 12)"><path d="M12 12C8.6 10.4 8.4 5.2 10.3 2.9L12 4.6l1.7-1.7c1.9 2.3 1.7 7.5-1.7 9.1z" fill="url(#g-petal)" stroke="#fff" stroke-width=".7"/></g><g transform="rotate(144 12 12)"><path d="M12 12C8.6 10.4 8.4 5.2 10.3 2.9L12 4.6l1.7-1.7c1.9 2.3 1.7 7.5-1.7 9.1z" fill="url(#g-petal)" stroke="#fff" stroke-width=".7"/></g><g transform="rotate(216 12 12)"><path d="M12 12C8.6 10.4 8.4 5.2 10.3 2.9L12 4.6l1.7-1.7c1.9 2.3 1.7 7.5-1.7 9.1z" fill="url(#g-petal)" stroke="#fff" stroke-width=".7"/></g><g transform="rotate(288 12 12)"><path d="M12 12C8.6 10.4 8.4 5.2 10.3 2.9L12 4.6l1.7-1.7c1.9 2.3 1.7 7.5-1.7 9.1z" fill="url(#g-petal)" stroke="#fff" stroke-width=".7"/></g><circle cx="12" cy="12" r="2.4" fill="#FFC93C"/><circle cx="12" cy="12" r="1" fill="#FF8A3D"/></symbol><symbol id="i-daisy" viewBox="0 0 24 24"><g transform="rotate(0 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(45 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(90 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(135 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(180 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(225 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(270 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><g transform="rotate(315 12 12)"><ellipse cx="12" cy="6.2" rx="2.3" ry="4" fill="#FFD84D" stroke="#F5A700" stroke-width=".7"/></g><circle cx="12" cy="12" r="3.3" fill="#FF8A3D"/><circle cx="11" cy="11" r="1" fill="#FFC27A"/></symbol><symbol id="i-tulip" viewBox="0 0 24 24"><path d="M12 13v8.5" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/><path d="M12 20c-3-.3-5.2-2.4-5.8-5.2 2.8.2 4.8 2 5.8 5.2z" fill="#22C55E"/><path d="M6.5 5.5 9.5 8 12 3.8 14.5 8l3-2.5V10a5.5 5.5 0 0 1-11 0z" fill="url(#g-pink)"/><path d="M12 3.8 14.5 8l3-2.5V10a5.5 5.5 0 0 1-5.5 5.5z" fill="#C2185B" opacity=".25"/></symbol><symbol id="i-bouquet" viewBox="0 0 24 24"><path d="M9 11 5.2 6.6M15 11l3.8-4.4" stroke="#22C55E" stroke-width="1.6" stroke-linecap="round"/><ellipse cx="5.4" cy="10" rx="2.6" ry="1.2" transform="rotate(-35 5.4 10)" fill="#22C55E"/><ellipse cx="18.6" cy="10" rx="2.6" ry="1.2" transform="rotate(35 18.6 10)" fill="#16A34A"/><circle cx="7.6" cy="7.6" r="3" fill="#FF4F9A"/><circle cx="7.6" cy="7.6" r="1" fill="#FFD1E6"/><circle cx="16.4" cy="7.6" r="3" fill="#FFC93C"/><circle cx="16.4" cy="7.6" r="1" fill="#FF8A3D"/><circle cx="12" cy="5" r="3.2" fill="#8B5CF6"/><circle cx="12" cy="5" r="1.1" fill="#EDE5FF"/><path d="M5.8 10.5h12.4l-4.3 11.2h-3.8z" fill="#FFD1E6" stroke="#FF4F9A" stroke-linejoin="round"/><path d="M8.6 15.4h6.8" stroke="#FF4F9A" stroke-width="1.8"/><path d="M12 15.4l-2.3 2.3M12 15.4l2.3 2.3" stroke="#FF4F9A" stroke-width="1.3" stroke-linecap="round"/></symbol><symbol id="i-cube" viewBox="0 0 24 24"><g stroke="#fff" stroke-width=".9" stroke-linejoin="round"><path d="M12 2.5 20.5 7 12 11.5 3.5 7z" fill="#C4B5FD"/><path d="M3.5 7 12 11.5v10L3.5 17z" fill="#8B5CF6"/><path d="M12 11.5 20.5 7v10L12 21.5z" fill="#6D3FD8"/></g><path d="M8 6.2 11 7.8" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".8"/></symbol><symbol id="i-fish" viewBox="0 0 24 24"><path d="M16.8 12l4.7-5.2v10.4z" fill="#FF6B2C"/><path d="M8.6 7.2 11.6 3.6l2.6 4.6z" fill="#38BDF8"/><path d="M2.5 12C5 7 11.5 5.6 17.5 12 11.5 18.4 5 17 2.5 12z" fill="#FFA94D"/><path d="M8.6 7.6c-1 3-1 5.8 0 8.8M12.4 8.4c-.7 2.4-.7 4.8 0 7.2" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="5.7" cy="11.3" r="1.1" fill="#3A1F5D"/></symbol><symbol id="i-fish2" viewBox="0 0 24 24"><path d="M16.8 12l4.7-5.2v10.4z" fill="#0284C7"/><path d="M8.6 7.2 11.6 3.6l2.6 4.6z" fill="#FFC93C"/><path d="M2.5 12C5 7 11.5 5.6 17.5 12 11.5 18.4 5 17 2.5 12z" fill="#38BDF8"/><path d="M8.6 7.6c-1 3-1 5.8 0 8.8M12.4 8.4c-.7 2.4-.7 4.8 0 7.2" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="5.7" cy="11.3" r="1.1" fill="#3A1F5D"/></symbol><symbol id="i-mic" viewBox="0 0 24 24"><path d="M6 11a6 6 0 0 0 12 0M12 17v4M9 21.2h6" stroke="#FF4F9A" stroke-width="1.8" fill="none" stroke-linecap="round"/><rect x="8.5" y="2.5" width="7" height="11" rx="3.5" fill="url(#g-violet)"/><path d="M8.5 7.5h7M8.5 10h7" stroke="#DDD6FE" stroke-width="1"/></symbol><symbol id="i-dice" viewBox="0 0 24 24"><g transform="rotate(-8 12 12)"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5" fill="#fff" stroke="#FF4F9A" stroke-width="1.8"/><g fill="#8B5CF6"><circle cx="8" cy="8" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="16" cy="16" r="1.5"/><circle cx="16" cy="8" r="1.5"/><circle cx="8" cy="16" r="1.5"/></g></g></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.6l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17l-5.6 3 1.1-6.3L2.9 9.3l6.3-.9z" fill="url(#g-gold)" stroke="#E09B00" stroke-linejoin="round"/><path d="M9.6 9.6l1.3-2.6" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></symbol><symbol id="i-bulb" viewBox="0 0 24 24"><path d="M12 2.5a6.5 6.5 0 0 0-3.8 11.8c.6.5 1 1.2 1 2v.7h5.6v-.7c0-.8.4-1.5 1-2A6.5 6.5 0 0 0 12 2.5z" fill="url(#g-gold)" stroke="#E09B00"/><path d="M9.4 19h5.2M10 21.3h4" stroke="#8B7FA8" stroke-width="1.8" stroke-linecap="round"/><path d="M9.6 7.2a3.4 3.4 0 0 1 3.4-1.4" stroke="#fff" stroke-width="1.3" stroke-linecap="round" fill="none"/></symbol><symbol id="i-mouse" viewBox="0 0 24 24"><path d="M3.5 13.5c.5 4.3 4 7.5 8.5 7.5s8-3.2 8.5-7.5" stroke="#FF4F9A" stroke-width="1.7" fill="none" stroke-linecap="round"/><path d="M18.4 15.2l2.1-1.9 1.9 2.2" stroke="#FF4F9A" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="7.8" y="2.5" width="8.4" height="14" rx="4.2" fill="#fff" stroke="#8B5CF6" stroke-width="1.7"/><path d="M12 2.5v5" stroke="#8B5CF6" stroke-width="1.3"/><rect x="11" y="4.4" width="2" height="2.8" rx="1" fill="#FF4F9A"/></symbol><symbol id="i-point" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="url(#g-pink)"/><path d="M7.5 12h8.5m-3.5-4 4 4-4 4" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-burst" viewBox="0 0 24 24"><path d="M12 1.8l2 5.4 5.3-2.5-2.4 5.3 5.3 2-5.3 2 2.4 5.3-5.3-2.5-2 5.4-2-5.4-5.3 2.5 2.4-5.3L1.8 12l5.3-2-2.4-5.3 5.3 2.5z" fill="#FF8A3D"/><path d="M12 1.8l2 5.4 5.3-2.5-2.4 5.3 5.3 2-5.3 2 2.4 5.3-5.3-2.5-2 5.4-2-5.4-5.3 2.5 2.4-5.3L1.8 12l5.3-2-2.4-5.3 5.3 2.5z" transform="translate(12 12) scale(.55) translate(-12 -12)" fill="#FFC93C"/></symbol><symbol id="i-scroll" viewBox="0 0 24 24"><path d="M5.5 5h11.5v13.5A2.5 2.5 0 0 1 14.5 21H6.5" fill="#FFF3D1" stroke="#E0A526" stroke-width="1.3"/><rect x="3" y="3" width="15" height="4" rx="2" fill="#FFD27A" stroke="#E0A526" stroke-width="1.3"/><path d="M6.5 21a2.5 2.5 0 0 1 0-5H12v2.5a2.5 2.5 0 0 0 2.5 2.5z" fill="#FFD27A" stroke="#E0A526" stroke-width="1.3" stroke-linejoin="round"/><path d="M8.5 10h6M8.5 13h4.5" stroke="#C98A10" stroke-width="1.3" stroke-linecap="round"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 5.5H4.5a3 3 0 0 0 3.2 4.6M17 5.5h2.5a3 3 0 0 1-3.2 4.6" stroke="#E09B00" stroke-width="1.6" fill="none"/><path d="M7 3.5h10v5a5 5 0 0 1-10 0z" fill="url(#g-gold)" stroke="#E09B00"/><path d="M10.5 13.2h3l.6 3.8h-4.2z" fill="#FFB800"/><rect x="7.5" y="17" width="9" height="3.8" rx="1.2" fill="url(#g-violet)"/><path d="M12 5l.8 1.6 1.7.2-1.3 1.2.3 1.7-1.5-.8-1.5.8.3-1.7-1.3-1.2 1.7-.2z" fill="#fff"/></symbol><symbol id="i-letter" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="14" rx="2.5" fill="#FFE0EE" stroke="#FF4F9A" stroke-width="1.4"/><path d="M3.2 7.2 12 13l8.8-5.8" stroke="#FF4F9A" stroke-width="1.4" fill="none" stroke-linejoin="round"/><path d="M12 21s-8-5.2-8-10.6A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 8 2.8C20 15.8 12 21 12 21z" fill="#FF4F9A" transform="translate(7.6 9.4) scale(.37)"/></symbol><symbol id="i-hearts" viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-10.6A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 8 2.8C20 15.8 12 21 12 21z" fill="url(#g-pink)" transform="translate(-1.6 1.6) scale(.86)"/><path d="M12 21s-8-5.2-8-10.6A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 8 2.8C20 15.8 12 21 12 21z" fill="#B79CFF" transform="translate(12.4 -1.4) scale(.46)"/></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="11" cy="13" r="8.5" fill="#fff" stroke="#FF4F9A" stroke-width="2"/><circle cx="11" cy="13" r="5.2" fill="#FF4F9A"/><circle cx="11" cy="13" r="2.2" fill="#fff"/><path d="M11 13l8.5-8.5" stroke="#8B5CF6" stroke-width="1.8" stroke-linecap="round"/><path d="M17 3.6l3-1.1 1.1 1.1-1.1 3-1.9-.3z" fill="#8B5CF6"/></symbol><symbol id="i-books" viewBox="0 0 24 24"><rect x="3" y="15.6" width="18" height="4.6" rx="1.2" fill="url(#g-violet)"/><path d="M16.5 17.9h3" stroke="#fff" stroke-width="1.2"/><g transform="rotate(-3 12 12.8)"><rect x="4.5" y="10.6" width="15" height="4.4" rx="1.2" fill="#FF4F9A"/><path d="M6 12.8h3" stroke="#fff" stroke-width="1.2"/></g><g transform="rotate(4 11.5 7.8)"><rect x="5.5" y="5.6" width="12.5" height="4.4" rx="1.2" fill="#14B8A6"/><path d="M14.5 7.8h2.4" stroke="#fff" stroke-width="1.2"/></g></symbol><symbol id="i-clover" viewBox="0 0 24 24"><path d="M12 12c1.5 3 4 5.6 6.5 8.4" stroke="#16A34A" stroke-width="1.7" fill="none" stroke-linecap="round"/><g transform="rotate(0 12 12)"><path d="M12 12C9 10.5 8.2 6.8 10 5.6c1-.7 2 0 2 1 0-1 1-1.7 2-1 1.8 1.2 1 4.9-2 6.4z" fill="#22C55E" stroke="#fff" stroke-width=".6"/><path d="M12 11.6V7.4" stroke="#86EFAC" stroke-width=".8" stroke-linecap="round"/></g><g transform="rotate(90 12 12)"><path d="M12 12C9 10.5 8.2 6.8 10 5.6c1-.7 2 0 2 1 0-1 1-1.7 2-1 1.8 1.2 1 4.9-2 6.4z" fill="#22C55E" stroke="#fff" stroke-width=".6"/><path d="M12 11.6V7.4" stroke="#86EFAC" stroke-width=".8" stroke-linecap="round"/></g><g transform="rotate(180 12 12)"><path d="M12 12C9 10.5 8.2 6.8 10 5.6c1-.7 2 0 2 1 0-1 1-1.7 2-1 1.8 1.2 1 4.9-2 6.4z" fill="#22C55E" stroke="#fff" stroke-width=".6"/><path d="M12 11.6V7.4" stroke="#86EFAC" stroke-width=".8" stroke-linecap="round"/></g><g transform="rotate(270 12 12)"><path d="M12 12C9 10.5 8.2 6.8 10 5.6c1-.7 2 0 2 1 0-1 1-1.7 2-1 1.8 1.2 1 4.9-2 6.4z" fill="#22C55E" stroke="#fff" stroke-width=".6"/><path d="M12 11.6V7.4" stroke="#86EFAC" stroke-width=".8" stroke-linecap="round"/></g></symbol><symbol id="i-gift" viewBox="0 0 24 24"><rect x="3.5" y="10" width="17" height="11" rx="1.8" fill="url(#g-pink)"/><rect x="2.5" y="7" width="19" height="4.2" rx="1.4" fill="#E83E8C"/><rect x="10.5" y="7" width="3" height="14" fill="#FFC93C"/><path d="M12 7C10 3.6 6.4 3.6 6.6 5.6 6.8 7 9.6 7 12 7zm0 0c2-3.4 5.6-3.4 5.4-1.4C17.2 7 14.4 7 12 7z" fill="none" stroke="#FFC93C" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="i-party" viewBox="0 0 24 24"><path d="M3 21l4.8-12.6 7.8 7.8z" fill="url(#g-gold)" stroke="#E09B00" stroke-linejoin="round"/><path d="M5.3 15.1l3.6 3.6M6.8 11.2l5.9 5.9" stroke="#FF4F9A" stroke-width="1.4"/><path d="M13 9c1-2.5 3-3 4.5-2.5M15 13c2-.8 3.8 0 4.5 1.3" stroke="#38BDF8" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="17.5" cy="4.6" r="1.3" fill="#8B5CF6"/><circle cx="20.4" cy="10.4" r="1.1" fill="#FF4F9A"/><circle cx="11" cy="3.6" r="1" fill="#14B8A6"/><rect x="19.4" y="2" width="2" height="2" rx=".4" fill="#FFC93C" transform="rotate(20 20.4 3)"/></symbol><symbol id="i-grin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="url(#g-gold)" stroke="#E09B00"/><circle cx="9" cy="10" r="1.2" fill="#3A1F5D"/><circle cx="15" cy="10" r="1.2" fill="#3A1F5D"/><path d="M7.5 13.3h9a4.5 4.5 0 0 1-9 0z" fill="#3A1F5D"/><circle cx="6.8" cy="13" r="1.2" fill="#FF8CC6" opacity=".6"/><circle cx="17.2" cy="13" r="1.2" fill="#FF8CC6" opacity=".6"/></symbol><symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="url(#g-gold)" stroke="#E09B00"/><circle cx="9" cy="10" r="1.2" fill="#3A1F5D"/><circle cx="15" cy="10" r="1.2" fill="#3A1F5D"/><path d="M8.5 14.3a4.2 4.2 0 0 0 7 0" stroke="#3A1F5D" stroke-width="1.6" fill="none" stroke-linecap="round"/></symbol><symbol id="i-meh" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="url(#g-gold)" stroke="#E09B00"/><circle cx="9" cy="10" r="1.2" fill="#3A1F5D"/><circle cx="15" cy="10" r="1.2" fill="#3A1F5D"/><path d="M9 15h6" stroke="#3A1F5D" stroke-width="1.6" stroke-linecap="round"/></symbol><symbol id="i-think" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="url(#g-gold)" stroke="#E09B00"/><circle cx="9" cy="10" r="1.2" fill="#3A1F5D"/><circle cx="15" cy="10" r="1.2" fill="#3A1F5D"/><path d="M9.3 15.6c1.6-.9 3.6-.8 5.2.3M13.6 7.4l2.8-.8" stroke="#3A1F5D" stroke-width="1.5" fill="none" stroke-linecap="round"/></symbol><symbol id="i-bookopen" viewBox="0 0 24 24"><path d="M12 6.5C9.5 4.8 6 4.5 2.5 5.2v13.3c3.5-.7 7-.4 9.5 1.3zM12 6.5c2.5-1.7 6-2 9.5-1.3v13.3c-3.5-.7-7-.4-9.5 1.3z" fill="#E7FBEF" stroke="#14B8A6" stroke-width="1.4" stroke-linejoin="round"/><path d="M5 9c1.6-.2 3.2 0 4.6.6M5 12c1.6-.2 3.2 0 4.6.6M14.4 9.6c1.4-.6 3-.8 4.6-.6M14.4 12.6c1.4-.6 3-.8 4.6-.6" stroke="#2DD4BF" stroke-width="1.2" stroke-linecap="round"/></symbol><symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 8l4.5 4L12 4.5 16.5 12 21 8l-2 10.5H5z" fill="url(#g-gold)" stroke="#E09B00" stroke-linejoin="round"/><rect x="5" y="18.4" width="14" height="2.8" rx="1" fill="#FFB800" stroke="#E09B00"/><circle cx="12" cy="14.4" r="1.5" fill="#FF4F9A"/><circle cx="8" cy="15.1" r="1.1" fill="#8B5CF6"/><circle cx="16" cy="15.1" r="1.1" fill="#14B8A6"/><circle cx="3" cy="8" r="1.3" fill="#FFC93C"/><circle cx="12" cy="4.5" r="1.3" fill="#FFC93C"/><circle cx="21" cy="8" r="1.3" fill="#FFC93C"/></symbol><symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0 0 18c1.4 0 2-.9 2-1.8 0-1.3-1.2-1.6-1.2-2.8 0-1 .8-1.6 1.8-1.6H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z" fill="#FFE8C7" stroke="#E0A526" stroke-width="1.2"/><circle cx="7.4" cy="11.6" r="1.6" fill="#FF4F9A"/><circle cx="9.4" cy="7" r="1.6" fill="#8B5CF6"/><circle cx="14.4" cy="6.8" r="1.6" fill="#14B8A6"/><circle cx="17.6" cy="10.6" r="1.6" fill="#38BDF8"/></symbol><symbol id="i-magnet" viewBox="0 0 24 24"><path d="M5 3.5h4.2v8a2.8 2.8 0 0 0 5.6 0v-8H19v8a7 7 0 0 1-14 0z" fill="#EF4444"/><path d="M5 3.5h4.2v3.6H5zM14.8 3.5H19v3.6h-4.2z" fill="#E5E7EB"/><path d="M7 11.5a5 5 0 0 0 1.6 3.7" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".6" fill="none"/></symbol><symbol id="i-warn" viewBox="0 0 24 24"><path d="M10.3 3.7a2 2 0 0 1 3.4 0l8 13.8A2 2 0 0 1 20 20.5H4a2 2 0 0 1-1.7-3z" fill="url(#g-gold)" stroke="#E09B00"/><path d="M12 9v5" stroke="#3A1F5D" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="17" r="1.3" fill="#3A1F5D"/></symbol><symbol id="i-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#22C55E"/><path d="M7.5 12.3l3 3 6-6.3" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="8" fill="#fff" stroke="#FF4F9A" stroke-width="2"/><path d="M12 13.5V9.2" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round"/><path d="M12 13.5l3 2" stroke="#FF4F9A" stroke-width="1.6" stroke-linecap="round"/><path d="M9.5 2.6h5M12 2.6v2.9M18.6 5.6l1.4 1.4" stroke="#8B5CF6" stroke-width="1.8" stroke-linecap="round"/></symbol><symbol id="i-alarm" viewBox="0 0 24 24"><path d="M4.5 4.5 2.8 6.2M19.5 4.5l1.7 1.7M7 20l-1.3 1.6M17 20l1.3 1.6" stroke="#EF4444" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="13" r="8" fill="#fff" stroke="#EF4444" stroke-width="2"/><path d="M12 8.6V13l2.8 2" stroke="#3A1F5D" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="#FFD43B"/><path d="M19 2.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z" fill="#FF8CC6"/></symbol><symbol id="i-teacher" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11.5" fill="#FFE4F2"/><path d="M12 3.6c-4.6 0-7 3.4-7 7.6v7.6c0 .9.8 1.4 1.6 1.1l1.6-.6h7.6l1.6.6c.8.3 1.6-.2 1.6-1.1v-7.6c0-4.2-2.4-7.6-7-7.6z" fill="#4A2C6B"/><path d="M5.2 22.6c.9-3.3 3.6-4.9 6.8-4.9s5.9 1.6 6.8 4.9A11.5 11.5 0 0 1 5.2 22.6z" fill="#FF4F9A"/><path d="M10.6 17.8 12 20l1.4-2.2" stroke="#fff" stroke-width="1" fill="none"/><ellipse cx="12" cy="12.4" rx="4.5" ry="5.1" fill="#FFD9C2"/><path d="M7.4 11.4c.4-3.4 2.4-5.1 4.6-5.1 2.6 0 4.2 1.6 4.6 4.3-2.6-.1-5-1.2-6.4-3-.4 1.6-1.4 3-2.8 3.8z" fill="#4A2C6B"/><circle cx="10.2" cy="12.6" r=".7" fill="#3A1F5D"/><circle cx="13.8" cy="12.6" r=".7" fill="#3A1F5D"/><circle cx="9.1" cy="14.2" r=".8" fill="#FF8CC6" opacity=".7"/><circle cx="14.9" cy="14.2" r=".8" fill="#FF8CC6" opacity=".7"/><path d="M10.5 15c.9.8 2.1.8 3 0" stroke="#D6336C" stroke-width=".9" fill="none" stroke-linecap="round"/><g transform="translate(16.6 6.6)"><circle cy="-1.3" r="1.1" fill="#FFC93C"/><circle cx="1.25" cy="-.4" r="1.1" fill="#FFC93C"/><circle cx=".8" cy="1.1" r="1.1" fill="#FFC93C"/><circle cx="-.8" cy="1.1" r="1.1" fill="#FFC93C"/><circle cx="-1.25" cy="-.4" r="1.1" fill="#FFC93C"/><circle r=".8" fill="#FF4F9A"/></g></symbol><symbol id="i-sound" viewBox="0 0 24 24"><path d="M3.5 9.3h3.4L12 5.2v13.6l-5.1-4.1H3.5z" fill="url(#g-violet)" stroke="url(#g-violet)" stroke-width="1.2" stroke-linejoin="round"/><path d="M15.3 9a4 4 0 0 1 0 6M17.9 6.4a7.6 7.6 0 0 1 0 11.2" stroke="#FF4F9A" stroke-width="2" fill="none" stroke-linecap="round"/></symbol><symbol id="i-music" viewBox="0 0 24 24"><path d="M9 17.5V6.2l11-2.7v11.3" stroke="url(#g-violet)" stroke-width="2.2" fill="none" stroke-linejoin="round"/><ellipse cx="6.4" cy="17.6" rx="3" ry="2.5" fill="#FF4F9A"/><ellipse cx="17.4" cy="15" rx="3" ry="2.5" fill="#FF4F9A"/></symbol><symbol id="i-mute" viewBox="0 0 24 24"><path d="M3.5 9.3h3.4L12 5.2v13.6l-5.1-4.1H3.5z" fill="url(#g-violet)" stroke="url(#g-violet)" stroke-width="1.2" stroke-linejoin="round"/><path d="M15.5 9.5l5 5m0-5-5 5" stroke="#FF4F9A" stroke-width="2" stroke-linecap="round"/></symbol><symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V5.5A1.5 1.5 0 0 1 5.5 4H9M15 4h3.5A1.5 1.5 0 0 1 20 5.5V9M20 15v3.5a1.5 1.5 0 0 1-1.5 1.5H15M9 20H5.5A1.5 1.5 0 0 1 4 18.5V15" stroke="#8B5CF6" stroke-width="2.2" fill="none" stroke-linecap="round"/><rect x="8.5" y="8.5" width="7" height="7" rx="1.8" fill="url(#g-pink)"/></symbol><symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="url(#g-violet)"/><path d="M9.3 9.4a2.8 2.8 0 1 1 3.9 2.6c-.8.4-1.2 1-1.2 1.8v.6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1.3" fill="#fff"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4.5 12h14m-5.5-6 6 6-6 6" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.9l10.6-6.8a1 1 0 0 0 0-1.7L9.5 4.3A1 1 0 0 0 8 5.2z" fill="currentColor"/></symbol><symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4.5" width="4.2" height="15" rx="1.4" fill="currentColor"/><rect x="13.8" y="4.5" width="4.2" height="15" rx="1.4" fill="currentColor"/></symbol><symbol id="i-reset" viewBox="0 0 24 24"><path d="M4.6 12a7.4 7.4 0 1 0 2.2-5.3M4.2 3.6v4.3h4.3" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11m0-11-11 11" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol></svg>
 <canvas id="bgfx"></canvas>
 <div class="blobs"><i></i><i></i><i></i></div>
 
@@ -317,8 +320,10 @@ video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
   </div>
   <nav class="steps" id="steps"></nav>
   <div class="tools">
-    <button class="ibtn" id="sndBtn" title="Bật/tắt âm thanh"><svg class="ic"><use href="#i-sound"/></svg></button>
+    <label class="music" title="Âm lượng nhạc nền"><button class="ibtn" id="musBtn" title="Bật/tắt nhạc nền"><svg class="ic"><use href="#i-music"/></svg></button><input type="range" id="musVol" min="0" max="1" step="0.05"></label>
+    <button class="ibtn" id="sndBtn" title="Bật/tắt hiệu ứng âm thanh"><svg class="ic"><use href="#i-sound"/></svg></button>
     <button class="ibtn" id="fsBtn" title="Toàn màn hình (F)"><svg class="ic"><use href="#i-full"/></svg></button>
+    <button class="ibtn" id="resetTop" title="Chơi lại từ đầu (xoá hết tiến độ)"><svg class="ic"><use href="#i-reset"/></svg></button>
     <button class="ibtn" id="helpBtn" title="Hướng dẫn cho giáo viên"><svg class="ic"><use href="#i-help"/></svg></button>
   </div>
 </header>
@@ -329,15 +334,15 @@ video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
     <div class="hero">
       <span class="badge"><svg class="ic"><use href="#i-sakura"/></svg> Chào mừng Ngày Nhà giáo Việt Nam 20/11</span>
       <h1>Hái Hoa<br>Tặng Thầy Cô</h1>
-      <div class="dedic"><svg class="ic av"><use href="#i-teacher"/></svg><span>Kính tặng<b>Thầy Cô</b></span></div>
+      <div class="dedic"><svg class="ic av"><use href="#i-teacher"/></svg><span>Giáo viên:<b>Trần Thị Phương Anh</b></span></div>
       <h3>Tiết Luyện tập chung</h3>
-      <p>Lập phương của một tổng, một hiệu • Tổng và hiệu hai lập phương</p>
+      <p>Lập phương của một tổng, một hiệu<br>Tổng và hiệu của hai lập phương</p>
       <div class="row">
         <button class="btn pri" data-go="1">Bắt đầu hành trình <svg class="ic"><use href="#i-arrow"/></svg></button>
         <button class="btn vbtn" data-video="intro" hidden><svg class="ic"><use href="#i-play"/></svg> Video mở đầu</button>
       </div>
       <div class="journey">
-        <span><svg class="ic"><use href="#i-daisy"/></svg> Sơ đồ tư duy</span><span><svg class="ic"><use href="#i-cube"/></svg> Khối 3D</span><span><svg class="ic"><use href="#i-tulip"/></svg> Hái hoa tặng thầy cô</span><span><svg class="ic"><use href="#i-fish"/></svg> Vận dụng</span><span><svg class="ic"><use href="#i-bouquet"/></svg> Tri ân</span>
+        <span><svg class="ic"><use href="#i-daisy"/></svg> Sơ đồ tư duy</span><span><svg class="ic"><use href="#i-tulip"/></svg> Hái hoa tặng thầy cô</span><span><svg class="ic"><use href="#i-fish"/></svg> Vận dụng</span><span><svg class="ic"><use href="#i-bouquet"/></svg> Tri ân</span>
       </div>
     </div>
     <div class="heroart" id="heroArt"><div class="persp"><div class="hcube" id="hcube"></div></div></div>
@@ -382,37 +387,7 @@ video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
 
   <!-- CHẶNG 2 -->
   <section class="stage" id="s2">
-    <div class="shead"><span class="chip">Chặng 2</span><h2>Vì sao <span class="math">(a + b)³ = a³ + 3a²b + 3ab² + b³</span>?</h2><span class="sp"></span>
-      <button class="btn vbtn" data-video="cube" hidden><svg class="ic"><use href="#i-play"/></svg> Video</button></div>
-    <div class="s2grid">
-      <div class="card scene" id="cubeScene"><div class="world" id="cubeWorld"></div><div class="hint"><svg class="ic"><use href="#i-mouse"/></svg> Kéo chuột để xoay khối</div></div>
-      <div class="card info">
-        <div class="formula math" id="termRow">
-          <span>(a + b)³ =</span>
-          <span class="term" data-t="a3" style="background:#FF4F9A">a³</span>+
-          <span class="term" data-t="a2b" style="background:#8B5CF6">3a²b</span>+
-          <span class="term" data-t="ab2" style="background:#FF9F1C">3ab²</span>+
-          <span class="term" data-t="b3" style="background:#14B8A6">b³</span>
-        </div>
-        <div class="reveal">
-          <button class="btn pri" id="explode"><svg class="ic"><use href="#i-burst"/></svg> Tách khối</button>
-          <button class="btn" id="spinBtn"><svg class="ic"><use href="#i-pause"/></svg> Dừng xoay</button>
-        </div>
-        <div class="counts">
-          <div style="background:#FF4F9A"><b>1</b>khối a³</div>
-          <div style="background:#8B5CF6"><b>3</b>khối a²b</div>
-          <div style="background:#FF9F1C"><b>3</b>khối ab²</div>
-          <div style="background:#14B8A6"><b>1</b>khối b³</div>
-        </div>
-        <div class="tip"><svg class="ic"><use href="#i-point"/></svg> Khối lập phương cạnh <b>a + b</b> được cắt thành <b>8 khối</b>. Bấm vào từng hạng tử để thấy các khối tương ứng.<br>
-          <svg class="ic"><use href="#i-bulb"/></svg> Đổi <b>b</b> thành <b>−b</b>: các hạng tử chứa b mũ lẻ đổi dấu ⇒ <span class="math">(a − b)³ = a³ − 3a²b + 3ab² − b³</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CHẶNG 3 -->
-  <section class="stage" id="s3">
-    <div class="shead"><span class="chip">Chặng 3</span><h2>Vườn hoa tri ân: Hái hoa tặng các thầy cô <svg class="ic"><use href="#i-tulip"/></svg></h2><span class="sp"></span>
+    <div class="shead"><span class="chip">Chặng 2</span><h2>Vườn hoa tri ân: Hái hoa tặng các thầy cô <svg class="ic"><use href="#i-tulip"/></svg></h2><span class="sp"></span>
       <div class="progress">Đã hái <span id="pickedN">0</span>/15 <div class="pbar"><i id="pbar" style="width:0"></i></div></div>
       <button class="btn sun" id="rulesBtn"><svg class="ic"><use href="#i-scroll"/></svg> Luật chơi</button>
       <button class="btn vbtn" data-video="garden" hidden><svg class="ic"><use href="#i-play"/></svg> Video</button></div>
@@ -422,10 +397,9 @@ video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
     <div class="garden" id="garden"></div>
   </section>
 
-  <!-- CHẶNG 4 -->
-  <section class="stage" id="s4">
-    <div class="shead"><span class="chip">Chặng 4</span><h2>Vận dụng: Toán học quanh em</h2><span class="sp"></span>
-      <div class="tabs"><button class="on" data-tab="tank"><svg class="ic"><use href="#i-fish"/></svg> Bể cá nhà bác Nam</button><button data-tab="rubik"><svg class="ic"><use href="#i-cube"/></svg> Thử thách Rubik</button></div>
+  <!-- CHẶNG 3 -->
+  <section class="stage" id="s3">
+    <div class="shead"><span class="chip">Chặng 3</span><h2>Vận dụng: Bể cá nhà bác Nam <svg class="ic"><use href="#i-fish"/></svg></h2><span class="sp"></span>
       <button class="btn vbtn" data-video="aquarium" hidden><svg class="ic"><use href="#i-play"/></svg> Video</button></div>
     <div class="s4grid" id="tabTank">
       <div class="card scene" id="tankScene"><div class="world" id="tankWorld"></div>
@@ -435,40 +409,22 @@ video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
         <div class="prob">Bể cá nhà bác Nam hình lập phương cạnh <b>x</b> (dm). Bác làm bể mới có cạnh <b>dài hơn 2 dm</b>.<br>
           a) Viết biểu thức thu gọn biểu thị phần thể tích tăng thêm.<br>b) Bể cũ cạnh 5 dm thì bể mới chứa nhiều hơn bao nhiêu lít nước?</div>
         <div class="slider">x =<input type="range" id="xRange" min="1" max="10" value="5"><output id="xOut">5</output>dm</div>
+        <div class="reveal"><button class="btn vio" data-ans="ta">Lời giải a</button><button class="btn pri" data-ans="tb">Lời giải b</button></div>
+        <div class="ans" id="ta">(x + 2)³ − x³ = x³ + 6x² + 12x + 8 − x³ = <b>6x² + 12x + 8</b> (dm³)</div>
+        <div class="ans" id="tb">x = 5: 6·25 + 12·5 + 8 = <b>218 dm³ = 218 lít</b> <svg class="ic"><use href="#i-fish"/></svg><br><i>Thử lại: 7³ − 5³ = 343 − 125 = 218 ✓</i></div>
         <div class="calc">
           <span>Thể tích bể cũ x³</span><b id="cOld"></b>
           <span>Thể tích bể mới (x + 2)³</span><b id="cNew"></b>
           <span>Phần tăng thêm (x + 2)³ − x³</span><b id="cDiff"></b>
           <span>Theo công thức 6x² + 12x + 8</span><b id="cForm" class="big"></b>
         </div>
-        <div class="reveal"><button class="btn vio" data-ans="ta">Lời giải a</button><button class="btn pri" data-ans="tb">Lời giải b</button></div>
-        <div class="ans" id="ta">(x + 2)³ − x³ = x³ + 6x² + 12x + 8 − x³ = <b>6x² + 12x + 8</b> (dm³)</div>
-        <div class="ans" id="tb">x = 5: 6·25 + 12·5 + 8 = <b>218 dm³ = 218 lít</b> <svg class="ic"><use href="#i-fish"/></svg><br><i>Thử lại: 7³ − 5³ = 343 − 125 = 218 ✓</i></div>
-      </div>
-    </div>
-    <div class="s4grid" id="tabRubik" hidden>
-      <div class="card scene" id="rubikScene"><div class="world" id="rubikWorld"></div><div class="hint"><svg class="ic"><use href="#i-mouse"/></svg> Kéo chuột để xoay</div></div>
-      <div class="card info">
-        <div class="prob">Khối lập phương lớn cạnh <b>n</b> ghép từ các khối nhỏ cạnh 1. Sơn toàn bộ mặt ngoài khối lớn.<br>
-          a) Có bao nhiêu khối nhỏ <b>không</b> bị sơn?<br>b) Chứng minh số khối bị sơn bằng <span class="math">6n² − 12n + 8</span>.</div>
-        <div class="slider">n =<input type="range" id="nRange" min="2" max="5" value="3"><output id="nOut">3</output></div>
-        <div class="reveal"><button class="btn pri" id="peelBtn"><svg class="ic"><use href="#i-palette"/></svg> Bóc lớp sơn</button></div>
-        <div class="calc">
-          <span>Tổng số khối nhỏ n³</span><b id="rAll"></b>
-          <span>Không bị sơn (n − 2)³</span><b id="rCore"></b>
-          <span>Bị sơn n³ − (n − 2)³</span><b id="rPaint"></b>
-          <span>Theo công thức 6n² − 12n + 8</span><b id="rForm" class="big"></b>
-        </div>
-        <div class="reveal"><button class="btn vio" data-ans="ra">Lời giải a</button><button class="btn mint" data-ans="rb">Lời giải b</button></div>
-        <div class="ans" id="ra">Các khối không bị sơn tạo thành khối lập phương bên trong cạnh n − 2 ⇒ có <b>(n − 2)³</b> khối.</div>
-        <div class="ans" id="rb">n³ − (n − 2)³ = n³ − (n³ − 6n² + 12n − 8) = <b>6n² − 12n + 8</b><br><i>Rubik 3×3×3: 54 − 36 + 8 = 26 = 27 − 1 ✓</i></div>
       </div>
     </div>
   </section>
 
-  <!-- CHẶNG 5 -->
-  <section class="stage" id="s5">
-    <div class="shead"><span class="chip">Chặng 5</span><h2 class="thanks">Cảm ơn thầy cô – Tri ân 20/11 <svg class="ic"><use href="#i-bouquet"/></svg></h2><span class="sp"></span>
+  <!-- CHẶNG 4 -->
+  <section class="stage" id="s4">
+    <div class="shead"><span class="chip">Chặng 4</span><h2 class="thanks">Cảm ơn thầy cô – Tri ân 20/11 <svg class="ic"><use href="#i-bouquet"/></svg></h2><span class="sp"></span>
       <button class="btn vbtn" data-video="ending" hidden><svg class="ic"><use href="#i-play"/></svg> Video tri ân</button></div>
     <div class="s5grid">
       <div class="card bouq"><h4><svg class="ic"><use href="#i-bouquet"/></svg> Bó hoa cả lớp tặng các thầy cô</h4><svg id="bouquet" viewBox="0 0 400 456"></svg><div class="btag"><span class="d">20/11</span><small>Kính tặng</small><b>Thầy Cô</b></div></div>
@@ -511,7 +467,6 @@ video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
 const VIDEOS = {
   intro:    'videos/01-mo-dau-tri-an-20-11.mp4',
   mindmap:  'videos/02-bong-hoa-7-canh.mp4',
-  cube:     'videos/03-khoi-lap-phuong.mp4',
   garden:   'videos/04-vuon-hoa-tri-an.mp4',
   aquarium: 'videos/05-be-ca.mp4',
   ending:   'videos/06-tri-an-ket-thuc.mp4',
@@ -541,7 +496,87 @@ const SFX = {
   tick: () => tone(1200, .04, 'square', 0, .05),
   win: () => [[523, 659, 784], [587, 740, 880], [659, 831, 988], [784, 988, 1175]].forEach((c, i) => c.forEach(f => tone(f, .5, 'triangle', i * .18, .12))),
   flip: () => tone(600, .1, 'sine', 0, .12),
+  // Tiếng đồng hồ mỗi giây: tích–tắc nhẹ, 10 giây cuối kêu gấp hơn
+  clock: left => left <= 10 ? (tone(1500, .05, 'square', 0, .09), tone(1500, .05, 'square', .25, .07)) : tone(left % 2 ? 1000 : 800, .04, 'triangle', 0, .1),
 };
+
+/* ===================== NHẠC NỀN (tự sáng tác bằng WebAudio, mỗi màn một giai điệu) ===================== */
+const CH = { C: [60, 64, 67], Dm: [62, 65, 69], Em: [64, 67, 71], F: [65, 69, 72], G: [67, 71, 74], Am: [69, 72, 76], E: [64, 68, 71], Bb: [58, 62, 65] };
+const MOODS = {
+  hero:   { bpm: 112, prog: ['C', 'G', 'Am', 'F'], vol: .9, pad: 1, bass: 'beat', arp: ['bell', 4], lead: ['piano', 2, .55], kick: [0, 8], hat: [4, 12] },
+  mind:   { bpm: 80, prog: ['Am', 'F', 'C', 'G'], vol: .55, pad: 1, bass: 'whole', arp: ['piano', 4], lead: ['bell', 4, .3] },
+  garden: { bpm: 124, prog: ['F', 'G', 'Em', 'Am'], vol: .85, bass: 'beat', arp: ['marimba', 2], lead: ['bell', 2, .45], kick: [0, 6, 8], hat: [2, 6, 10, 14] },
+  quiz:   { bpm: 132, prog: ['Am', 'Am', 'F', 'E'], vol: .8, bass: 'pulse', arp: ['pluck', 2], kick: [0, 4, 8, 12], hat: [2, 6, 10, 14, 15] },
+  apply:  { bpm: 96, prog: ['C', 'Am', 'Dm', 'G'], vol: .7, pad: 1, bass: 'beat', arp: ['pluck', 2], lead: ['marimba', 4, .5], hat: [4, 12] },
+  thanks: { bpm: 70, prog: ['F', 'G', 'Em', 'Am', 'Dm', 'G', 'C', 'C'], vol: .8, pad: 1, bass: 'whole', arp: ['piano', 4], lead: ['bell', 2, .5] },
+};
+const STAGE_MOOD = ['hero', 'mind', 'garden', 'apply', 'thanks'];
+const Music = (() => {
+  let on = localStorage.getItem('hhtc-music') !== '0', vol = +(localStorage.getItem('hhtc-music-vol') ?? .6);
+  let master = null, bus = null, cur = null, want = 'hero', step = 0, next = 0, timer = null, noise = null;
+  const mtof = m => 440 * 2 ** ((m - 69) / 12);
+  const ctx = () => (AC = AC || new (window.AudioContext || window.webkitAudioContext)());
+  function voice(kind, m, t, dur, v) {
+    const a = ctx(), g = a.createGain(), f = mtof(m);
+    const osc = (type, fr, det = 0) => { const o = a.createOscillator(); o.type = type; o.frequency.value = fr; o.detune.value = det; o.connect(g); o.start(t); o.stop(t + dur + 1.2); };
+    const env = (atk, rel) => { g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(v, t + atk); g.gain.exponentialRampToValueAtTime(.0005, t + atk + rel); };
+    if (kind === 'pad') { const lp = a.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 900; g.connect(lp).connect(bus); osc('sawtooth', f, -7); osc('sawtooth', f, 7); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(v, t + .6); g.gain.setValueAtTime(v, t + dur - .3); g.gain.linearRampToValueAtTime(0, t + dur + .5); return; }
+    g.connect(bus);
+    if (kind === 'bell') { osc('sine', f); osc('sine', f * 2.01); env(.005, 1.1); }
+    else if (kind === 'piano') { osc('triangle', f); osc('sine', f * 2); env(.008, .9); }
+    else if (kind === 'marimba') { osc('sine', f); osc('sine', f * 4); env(.003, .3); }
+    else if (kind === 'pluck') { osc('triangle', f); env(.003, .22); }
+    else if (kind === 'bass') { osc('triangle', f); osc('sine', f / 2); env(.01, Math.min(dur, .6)); }
+  }
+  function kick(t) { const a = ctx(), o = a.createOscillator(), g = a.createGain(); o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(45, t + .14); g.gain.setValueAtTime(.5, t); g.gain.exponentialRampToValueAtTime(.001, t + .2); o.connect(g).connect(bus); o.start(t); o.stop(t + .22); }
+  function hat(t) {
+    const a = ctx(); if (!noise) { noise = a.createBuffer(1, a.sampleRate * .1, a.sampleRate); const d = noise.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; }
+    const src = a.createBufferSource(), hp = a.createBiquadFilter(), g = a.createGain(); src.buffer = noise; hp.type = 'highpass'; hp.frequency.value = 7000;
+    g.gain.setValueAtTime(.12, t); g.gain.exponentialRampToValueAtTime(.001, t + .05); src.connect(hp).connect(g).connect(bus); src.start(t); src.stop(t + .06);
+  }
+  // Giai điệu lặp theo câu 8 ô nhịp: cùng mood luôn ra cùng một câu nhạc
+  const rnd = (bar, st, k) => { let h = (bar % 8) * 131 + st * 31 + k * 7 + cur.length * 977; h = Math.sin(h) * 10000; return h - Math.floor(h); };
+  function play(t) {
+    const M = MOODS[cur], spb = 60 / M.bpm / 4, bar = Math.floor(step / 16), st = step % 16, ch = CH[M.prog[bar % M.prog.length]];
+    if (st === 0 && M.pad) ch.forEach(m => voice('pad', m - 12, t, spb * 16, .035));
+    const b = ch[0] - 24 + (ch[0] > 66 ? -12 : 0);
+    if (M.bass === 'whole' && st === 0) voice('bass', b, t, spb * 16, .16);
+    if (M.bass === 'beat' && st % 4 === 0) voice('bass', b + (st === 8 ? 7 : 0), t, spb * 3, .15);
+    if (M.bass === 'pulse' && st % 2 === 0) voice('bass', b + (st % 4 ? 12 : 0), t, spb * 2, .13);
+    if (M.arp && st % M.arp[1] === 0) { const k = st / M.arp[1]; voice(M.arp[0], ch[[0, 1, 2, 1][k % 4]] + (k % 8 > 3 ? 12 : 0), t, spb * M.arp[1], .05); }
+    if (M.lead && st % M.lead[1] === 0 && rnd(bar, st, 1) < M.lead[2]) { const pool = [...ch, ch[0] + 12, ch[1] + 12, ch[0] + 2]; voice(M.lead[0], pool[Math.floor(rnd(bar, st, 2) * pool.length)] + 12, t, spb * M.lead[1], .06); }
+    if (M.kick && M.kick.includes(st)) kick(t);
+    if (M.hat && M.hat.includes(st)) hat(t);
+  }
+  function switchTo(m) {
+    const a = ctx(), t = a.currentTime;
+    if (bus) { const old = bus; old.gain.cancelScheduledValues(t); old.gain.setValueAtTime(old.gain.value, t); old.gain.linearRampToValueAtTime(0, t + 1); setTimeout(() => old.disconnect(), 2500); }
+    bus = a.createGain(); bus.gain.setValueAtTime(0, t); bus.gain.linearRampToValueAtTime(MOODS[m].vol, t + 1.2); bus.connect(master);
+    cur = m; step = 0; next = t + .08;
+  }
+  function tick() {
+    if (!on || !master) return;
+    const a = ctx(); if (a.state === 'suspended') return;
+    if (want !== cur) switchTo(want);
+    if (next < a.currentTime - .1) next = a.currentTime + .05;
+    while (next < a.currentTime + .25) { play(next); next += 60 / MOODS[cur].bpm / 4; step++; }
+  }
+  function start() {
+    if (!on) return; const a = ctx(); if (a.state === 'suspended') a.resume();
+    if (!master) { master = a.createGain(); master.gain.value = vol * .8; master.connect(a.destination); }
+    if (!timer) timer = setInterval(tick, 40); tick();
+  }
+  function stop() { clearInterval(timer); timer = null; if (bus) { const t = AC.currentTime; bus.gain.cancelScheduledValues(t); bus.gain.setValueAtTime(bus.gain.value, t); bus.gain.linearRampToValueAtTime(0, t + .4); const old = bus; setTimeout(() => old.disconnect(), 600); bus = null; cur = null; } }
+  return {
+    get on() { return on; }, get vol() { return vol; },
+    mood(m) { want = m; if (on && master) tick(); },
+    start,
+    toggle() { on = !on; localStorage.setItem('hhtc-music', on ? '1' : '0'); on ? start() : stop(); return on; },
+    setVol(v) { vol = v; localStorage.setItem('hhtc-music-vol', v); if (master) master.gain.setTargetAtTime(v * .8, AC.currentTime, .05); },
+  };
+})();
+// Trình duyệt chỉ cho phát tiếng sau lần bấm/gõ phím đầu tiên
+['pointerdown', 'keydown'].forEach(ev => addEventListener(ev, () => Music.start(), { once: true, capture: true }));
 
 /* ===================== HIỆU ỨNG HẠT: cánh hoa nền + pháo giấy ===================== */
 const bg = $('#bgfx'), bgc = bg.getContext('2d'), fx = $('#fx'), fxc = fx.getContext('2d');
@@ -696,20 +731,20 @@ function teamButtons(container, onPick, cur) {
   });
 }
 let presTeam = 0;
-function renderTeamButtons() { teamButtons($('#presTeams'), i => presTeam = i, presTeam); }
+function renderTeamButtons() { teamButtons($('#presTeams'), i => { if (i !== presTeam) resetTimer(); presTeam = i; }, presTeam); }
 
 /* ===================== ĐIỀU HƯỚNG CHẶNG ===================== */
-const STEP_NAMES = ['Chào mừng', 'Sơ đồ tư duy', 'Khối 3D', 'Hái hoa tặng thầy cô', 'Vận dụng', 'Tri ân 20/11'];
+const STEP_NAMES = ['Chào mừng', 'Sơ đồ tư duy', 'Hái hoa tặng thầy cô', 'Vận dụng', 'Tri ân 20/11'];
 STEP_NAMES.forEach((n, i) => { const b = el('button', '', `<span>${i}</span>${n}`); b.onclick = () => go(i); $('#steps').appendChild(b); });
 function go(i) {
-  i = Math.max(0, Math.min(5, i)); S.step = i; save();
+  i = Math.max(0, Math.min(STEP_NAMES.length - 1, i)); S.step = i; save();
   $$('.stage').forEach((s, k) => s.classList.toggle('active', k === i));
   $$('#steps button').forEach((b, k) => b.classList.toggle('on', k === i));
-  SFX.flip();
+  SFX.flip(); Music.mood(STAGE_MOOD[i]);
   requestAnimationFrame(() => {
     if (i === 1) layoutMind();
-    if (i === 3 && !S.rulesSeen) showRules();
-    if (i === 5) { renderBouquet(); renderPodium(); }
+    if (i === 2 && !S.rulesSeen) showRules();
+    if (i === 4) { renderBouquet(); renderPodium(); }
     fit3D();
   });
 }
@@ -723,16 +758,19 @@ addEventListener('keydown', e => {
 });
 function toggleFS() { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
 $('#fsBtn').onclick = toggleFS;
+$('#musVol').value = Music.vol; $('#musBtn').classList.toggle('off', !Music.on);
+$('#musBtn').onclick = e => { e.stopPropagation(); $('#musBtn').classList.toggle('off', !Music.toggle()); };
+$('#musVol').oninput = e => Music.setVol(+e.target.value);
 $('#sndBtn').onclick = () => { soundOn = !soundOn; $('#sndBtn').innerHTML = soundOn ? '<svg class="ic"><use href="#i-sound"/></svg>' : '<svg class="ic"><use href="#i-mute"/></svg>'; };
 
 /* ===================== MODAL ===================== */
 function openModal(html) { $('#dialog').innerHTML = `<button class="xbtn" onclick="closeModal()" title="Đóng"><svg class="ic"><use href="#i-close"/></svg></button>` + html; $('#modal').classList.add('open'); }
-function closeModal() { $('#modal').classList.remove('open'); $('#dialog').innerHTML = ''; clearInterval(qTimer); }
+function closeModal() { $('#modal').classList.remove('open'); $('#dialog').innerHTML = ''; clearInterval(qTimer); Music.mood(STAGE_MOOD[S.step]); }
 $('#modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
 $('#helpBtn').onclick = () => openModal(`<div class="notice"><h3><svg class="ic"><use href="#i-help"/></svg> Hướng dẫn cho giáo viên</h3><ul>
   <li>Phím <b>→</b> / <b>←</b> (hoặc bút trình chiếu) để chuyển chặng; phím F để toàn màn hình.</li>
   <li>Bấm vào tên nhóm ở thanh dưới để đổi tên; nút + / − để cộng trừ hoa.</li>
-  <li>Điểm, hoa đã hái và lời chúc được lưu tự động trên máy này. Nút “Chơi lại từ đầu” ở chặng 5 để xoá.</li>
+  <li>Điểm, hoa đã hái và lời chúc được lưu tự động trên máy này. Nút <svg class="ic"><use href="#i-reset"/></svg> trên thanh trên cùng (hoặc “Chơi lại từ đầu” ở chặng 4) để xoá hết tiến độ.</li>
   <li>Video Muse: chép vào thư mục <b>videos</b> cạnh file này, đặt đúng tên (xem tệp hướng dẫn). Nút <svg class="ic"><use href="#i-play"/></svg> Video tự hiện khi có file.</li>
 </ul><button class="btn pri" onclick="closeModal()">Đã hiểu <svg class="ic"><use href="#i-ok"/></svg></button></div>`);
 
@@ -794,8 +832,9 @@ $('#tipsBtn').onclick = () => openModal(`<div class="notice"><h3><svg class="ic"
   <li><span class="math">A³ ± B³</span>: ngoặc đầu <b>cùng dấu</b> đề bài; hạng tử AB ở ngoặc sau <b>ngược dấu</b>; B² luôn mang dấu <b>+</b>.</li>
   <li><svg class="ic"><use href="#i-warn"/></svg> <span class="math">(A + B)³ ≠ A³ + B³</span> &nbsp;•&nbsp; <span class="math">A² − AB + B² ≠ (A − B)²</span> &nbsp;•&nbsp; <span class="math">(a − b)³ = −(b − a)³</span></li>
 </ul><button class="btn pri" onclick="closeModal()">Nhớ rồi! <svg class="ic"><use href="#i-hearts"/></svg></button></div>`);
-// Đồng hồ trình bày
-let tTotal = 120, tLeftS = 120, tInt = null;
+// Đồng hồ trình bày: mỗi nhóm mặc định 2 phút, đổi nhóm thì đặt lại
+const MIND_SECS = 120;
+let tTotal = MIND_SECS, tLeftS = MIND_SECS, tInt = null;
 function drawTimer() {
   $('#tLeft').textContent = `${Math.floor(tLeftS / 60)}:${String(tLeftS % 60).padStart(2, '0')}`;
   $('#ringFg').style.strokeDashoffset = 276.5 * (1 - tLeftS / tTotal);
@@ -804,13 +843,14 @@ function drawTimer() {
 $('#tStart').onclick = () => {
   if (tInt) { clearInterval(tInt); tInt = null; $('#tStart').innerHTML = '<svg class="ic"><use href="#i-play"/></svg> Tiếp tục'; return; }
   $('#tStart').innerHTML = '<svg class="ic"><use href="#i-pause"/></svg> Tạm dừng';
-  tInt = setInterval(() => { tLeftS--; if (tLeftS <= 10 && tLeftS > 0) SFX.tick(); if (tLeftS <= 0) { tLeftS = 0; clearInterval(tInt); tInt = null; SFX.win(); $('#tStart').innerHTML = '<svg class="ic"><use href="#i-play"/></svg> Bắt đầu'; } drawTimer(); }, 1000);
+  tInt = setInterval(() => { tLeftS--; if (tLeftS > 0) SFX.clock(tLeftS); if (tLeftS <= 0) { tLeftS = 0; clearInterval(tInt); tInt = null; SFX.win(); $('#tStart').innerHTML = '<svg class="ic"><use href="#i-play"/></svg> Bắt đầu'; } drawTimer(); }, 1000);
 };
-$('#tReset').onclick = () => { clearInterval(tInt); tInt = null; tTotal = tLeftS = 120; $('#tStart').innerHTML = '<svg class="ic"><use href="#i-play"/></svg> Bắt đầu'; drawTimer(); };
+function resetTimer() { clearInterval(tInt); tInt = null; tTotal = tLeftS = MIND_SECS; $('#tStart').innerHTML = '<svg class="ic"><use href="#i-play"/></svg> Bắt đầu'; drawTimer(); }
+$('#tReset').onclick = resetTimer;
 $('#tPlus').onclick = () => { tLeftS += 30; tTotal = Math.max(tTotal, tLeftS); drawTimer(); };
 $('#drawLot').onclick = () => {
   let k = 0; const btns = $$('#presTeams button'), end = 12 + (Math.random() * 4 | 0);
-  const spin = setInterval(() => { btns.forEach(b => b.classList.remove('on')); btns[k % 4].classList.add('on'); SFX.tick(); if (++k > end) { clearInterval(spin); presTeam = (k - 1) % 4; SFX.ok(); const r = btns[presTeam].getBoundingClientRect(); burst(r.left + r.width / 2, r.top, 60, 6); } }, 110);
+  const spin = setInterval(() => { btns.forEach(b => b.classList.remove('on')); btns[k % 4].classList.add('on'); SFX.tick(); if (++k > end) { clearInterval(spin); presTeam = (k - 1) % 4; resetTimer(); SFX.ok(); const r = btns[presTeam].getBoundingClientRect(); burst(r.left + r.width / 2, r.top, 60, 6); } }, 110);
 };
 const critBoxes = $$('#crit input');
 const critN = () => critBoxes.filter(c => c.checked).length;
@@ -840,32 +880,7 @@ function view3D(sceneId, worldId, rx = -24, ry = 35, size = 300) {
 function fit3D() { Object.values(views).forEach(v => { const w = v.scene.clientWidth, h = v.scene.clientHeight; if (w) { v.k = Math.min(w, h) / (v.size * 3); v.apply(); } }); }
 (function spinLoop() { Object.values(views).forEach(v => { if (v.auto && !v.drag && v.scene.offsetParent) { v.ry += .25; v.apply(); } }); requestAnimationFrame(spinLoop); })();
 
-/* ===================== CHẶNG 2: khối (a + b)³ tách 8 khối ===================== */
-const A = 150, B = 90, HALF = (A + B) / 2;
-const TYPE_COLOR = { a3: '#FF4F9A', a2b: '#8B5CF6', ab2: '#FF9F1C', b3: '#14B8A6' };
-const LABEL = { a3: 'a³', a2b: 'a²b', ab2: 'ab²', b3: 'b³' };
-const cubeView = view3D('cubeScene', 'cubeWorld', -24, 35, 240);
-const blocks = [];
-for (const ix of [0, 1]) for (const iy of [0, 1]) for (const iz of [0, 1]) {
-  const dim = i => i ? B : A, start = i => i ? A - HALF : -HALF;
-  const w = dim(ix), h = dim(iy), d = dim(iz), nA = 3 - ix - iy - iz;
-  const type = ['b3', 'ab2', 'a2b', 'a3'][nA], col = TYPE_COLOR[type];
-  const bx = makeBox(w, h, d, (f, n) => { f.style.background = `linear-gradient(135deg,${col},${col}DD)`; const fs = Math.min(f.offsetWidth || 999, 60); f.style.fontSize = Math.min(parseFloat(f.style.width), parseFloat(f.style.height)) * .32 + 'px'; f.textContent = LABEL[type]; });
-  bx.dataset.type = type;
-  const cx = start(ix) + w / 2, cy = start(iy) + h / 2, cz = start(iz) + d / 2, dir = [ix ? 1 : -1, iy ? 1 : -1, iz ? 1 : -1];
-  bx.home = `translate3d(${cx}px,${cy}px,${cz}px)`; bx.far = `translate3d(${cx + dir[0] * 55}px,${cy + dir[1] * 55}px,${cz + dir[2] * 55}px)`;
-  bx.style.transform = bx.home; cubeView.world.appendChild(bx); blocks.push(bx);
-}
-let exploded = false;
-$('#explode').onclick = () => { exploded = !exploded; blocks.forEach((b, i) => setTimeout(() => b.style.transform = exploded ? b.far : b.home, i * 70)); $('#explode').innerHTML = exploded ? '<svg class="ic"><use href="#i-magnet"/></svg> Ghép khối' : '<svg class="ic"><use href="#i-burst"/></svg> Tách khối'; SFX.ok(); };
-$('#spinBtn').onclick = () => { cubeView.auto = !cubeView.auto; $('#spinBtn').innerHTML = cubeView.auto ? '<svg class="ic"><use href="#i-pause"/></svg> Dừng xoay' : '<svg class="ic"><use href="#i-play"/></svg> Xoay tự động'; };
-$$('.term').forEach(t => t.onclick = () => {
-  const on = !t.classList.contains('on'); $$('.term').forEach(x => x.classList.remove('on'));
-  if (on) { t.classList.add('on'); if (!exploded) $('#explode').click(); }
-  blocks.forEach(b => b.classList.toggle('dim', on && b.dataset.type !== t.dataset.t)); SFX.pop();
-});
-
-/* ===================== CHẶNG 3: vườn hoa ===================== */
+/* ===================== CHẶNG 2: vườn hoa ===================== */
 function renderGarden() {
   const g = $('#garden'); g.innerHTML = '';
   FLOWERS.forEach(f => {
@@ -893,9 +908,12 @@ function showRules() {
 $('#rulesBtn').onclick = showRules;
 let qTimer = null;
 function teamRow() { return `<div class="qfoot"><span class="lbl">Nhóm trả lời:</span><div class="tsel" id="qTeams"></div></div>`; }
+// Câu rút gọn, chứng minh – áp dụng, vận dụng cần trình bày dài hơn nên được 1 phút; còn lại 30 giây
+const qSecs = f => /^(Rút gọn|Chứng minh|Vận dụng)/.test(f.topic) ? 60 : 30;
 function openQuestion(f) {
+  Music.mood('quiz'); const secs = qSecs(f);
   openModal(`<div class="qhead">${flowerSVG(f)}<div><h3>${f.name}</h3><div class="tags"><span class="p">+${f.pts} <svg class="ic"><use href="#i-sakura"/></svg></span><span>${f.topic}</span></div></div>
-    <span class="sp" style="flex:1"></span><div class="qtimer"><button class="btn" id="qT"><svg class="ic"><use href="#i-timer"/></svg> 30 giây</button></div></div>
+    <span class="sp" style="flex:1"></span><div class="qtimer"><button class="btn" id="qT"><svg class="ic"><use href="#i-timer"/></svg> ${secs === 60 ? '1 phút' : '30 giây'}</button></div></div>
     <div class="qtext">${f.q}</div>
     <div class="opts">${f.o.map((o, i) => `<button class="opt math" data-i="${i}"><i>${'ABCD'[i]}</i>${o}</button>`).join('')}</div>
     ${teamRow()}
@@ -904,8 +922,8 @@ function openQuestion(f) {
   teamButtons($('#qTeams'), i => { S.curTeam = i; save(); }, S.curTeam);
   $('#solBtn').onclick = () => $('#sol').classList.add('show');
   $('#qT').onclick = () => {
-    let t = 30; clearInterval(qTimer); $('#qT').innerHTML = '<svg class="ic"><use href="#i-timer"/></svg> 30';
-    qTimer = setInterval(() => { t--; $('#qT').innerHTML = '<svg class="ic"><use href="#i-timer"/></svg> ' + t + ' giây'; if (t <= 5 && t > 0) SFX.tick(); if (t <= 0) { clearInterval(qTimer); $('#qT').innerHTML = '<svg class="ic"><use href="#i-alarm"/></svg> Hết giờ!'; SFX.no(); } }, 1000);
+    let t = secs; clearInterval(qTimer); $('#qT').innerHTML = '<svg class="ic"><use href="#i-timer"/></svg> ' + t + ' giây';
+    qTimer = setInterval(() => { t--; $('#qT').innerHTML = '<svg class="ic"><use href="#i-timer"/></svg> ' + t + ' giây'; if (t > 0) SFX.clock(t); if (t <= 0) { clearInterval(qTimer); $('#qT').innerHTML = '<svg class="ic"><use href="#i-alarm"/></svg> Hết giờ!'; SFX.no(); } }, 1000);
   };
   $$('.opt').forEach(b => b.onclick = () => {
     if (b.disabled) return;
@@ -930,12 +948,41 @@ function openLucky(f) {
   $('#takeGift').onclick = () => { S.picked[f.id] = S.curTeam; S.order.push(f.id); award(S.curTeam, f.pts, $('#takeGift')); renderGarden(); closeModal(); };
 }
 
-/* ===================== CHẶNG 4: bể cá + Rubik ===================== */
-$$('.tabs button').forEach(b => b.onclick = () => {
-  $$('.tabs button').forEach(x => x.classList.toggle('on', x === b));
-  $('#tabTank').hidden = b.dataset.tab !== 'tank'; $('#tabRubik').hidden = b.dataset.tab !== 'rubik'; SFX.pop(); requestAnimationFrame(fit3D);
-});
+/* ===================== CHẶNG 3: bể cá ===================== */
 $$('[data-ans]').forEach(b => b.onclick = () => { const t = $('#' + b.dataset.ans); t.classList.add('show'); SFX.ok(); setTimeout(() => t.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80); });
+// Trang trí bể: cát, sỏi, rong biển đung đưa, bọt khí và đàn cá nhiều màu (cố định theo x để kéo thanh trượt không bị nhảy lung tung)
+const WEED = ['#16A34A', '#22C55E', '#15803D', '#4ADE80', '#65A30D', '#0D9488'];
+const weedSvg = (c, k) => `<svg viewBox="0 0 30 100" preserveAspectRatio="none">${[0, 1, 2].slice(0, k).map(j => `<path d="M${15 + (j - 1) * 6} 100 C${4 + j * 3} 78 ${26 - j * 4} 58 ${14 + j * 2} 38 C${6 + j * 3} 24 ${22 - j * 2} 12 ${15 + (j - 1) * 3} ${j * 9}" stroke="${c}" stroke-width="${5 - j}" fill="none" stroke-linecap="round" opacity="${1 - j * .15}"/>`).join('')}</svg>`;
+function aquarium(f, n, s, x) {
+  if (n === 'top') return;
+  if (n === 'bottom') { f.style.background = 'linear-gradient(135deg,#FCD34D,#F59E0B)'; return; }
+  let seed = x * 97 + n.length * 13; const R = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const back = n !== 'front', sz = v => Math.max(6, v);
+  let h = '<div class="aq" style="container-type:size">';
+  h += [12, 46, 78].map((l, i) => `<i class="ray" style="left:${l}%;animation-delay:${-i * 2}s"></i>`).join('');
+  const weeds = back ? 5 + Math.round(s / 60) : 3 + Math.round(s / 90);
+  for (let i = 0; i < weeds; i++) {
+    const wh = (back ? 35 + R() * 45 : 20 + R() * 30), ww = sz(s * (.07 + R() * .06));
+    h += `<span class="weed${back ? '' : ' fg'}" style="left:${(i + R() * .6) / weeds * 96}%;width:${ww}px;height:${wh}%;animation-duration:${3 + R() * 3}s;animation-delay:${-R() * 4}s">${weedSvg(WEED[Math.floor(R() * WEED.length)], 1 + Math.floor(R() * 3))}</span>`;
+  }
+  h += '<span class="sand"></span>';
+  for (let i = 0; i < 4 + Math.round(s / 50); i++) {
+    const d = sz(s * (.03 + R() * .04));
+    h += `<span class="peb" style="left:${R() * 94}%;width:${d * 1.4}px;height:${d}px;background:${['#A8A29E', '#78716C', '#F472B6', '#FB923C', '#E7E5E4'][Math.floor(R() * 5)]}"></span>`;
+  }
+  if (!back) {
+    const bubbles = 4 + Math.round(s / 40);
+    for (let i = 0; i < bubbles; i++) { const d = sz(s * (.02 + R() * .035)); h += `<span class="bub" style="left:${5 + R() * 88}%;width:${d}px;height:${d}px;animation-duration:${3 + R() * 4}s;animation-delay:${-R() * 6}s"></span>`; }
+    const fishN = Math.max(5, Math.min(9, Math.round(s / 24)));
+    for (let i = 0; i < fishN; i++) {
+      const fs = Math.max(14, s * (.16 + R() * .14)), x0 = R() * 20, x1 = 45 + R() * 25;
+      h += `<span class="fish" style="top:${8 + (i / fishN) * 68 + R() * 6}%;font-size:${fs}px;--x0:${x0}%;--x1:${x1}%;animation-duration:${5 + R() * 7}s;animation-delay:${-R() * 10}s;filter:hue-rotate(${Math.floor(R() * 360)}deg) saturate(1.3)"><svg class="ic"><use href="#i-${R() < .5 ? 'fish' : 'fish2'}"/></svg></span>`;
+    }
+  } else {
+    for (let i = 0; i < 2; i++) { const fs = Math.max(10, s * (.11 + R() * .06)); h += `<span class="fish" style="top:${20 + R() * 50}%;font-size:${fs}px;opacity:.55;--x0:${R() * 20}%;--x1:${55 + R() * 25}%;animation-duration:${8 + R() * 6}s;animation-delay:${-R() * 10}s;filter:hue-rotate(${Math.floor(R() * 360)}deg)"><svg class="ic"><use href="#i-fish2"/></svg></span>`; }
+  }
+  f.innerHTML = h + '</div>'; f.style.overflow = 'hidden';
+}
 const tankView = view3D('tankScene', 'tankWorld', -20, 32, 190);
 function buildTank() {
   const x = +$('#xRange').value, S0 = 260, u = S0 / (x + 2), s = x * u, off = (S0 - s) / 2;
@@ -945,7 +992,7 @@ function buildTank() {
   outer.style.transform = 'translate3d(0,0,0)';
   const inner = makeBox(s, s, s, (f, n) => {
     f.style.background = n === 'top' ? 'rgba(186,230,253,.55)' : 'linear-gradient(180deg,rgba(125,211,252,.45),rgba(2,132,199,.6))'; f.style.border = '2px solid #0284C7';
-    if (n === 'front') { f.innerHTML = `<span class="fish" style="top:30%;font-size:${Math.max(22, s / 3.5)}px"><svg class="ic"><use href="#i-fish"/></svg></span><span class="fish" style="top:62%;animation-delay:-3s;font-size:${Math.max(18, s / 5)}px"><svg class="ic"><use href="#i-fish2"/></svg></span>`; f.style.overflow = 'hidden'; }
+    aquarium(f, n, s, x);
   });
   inner.style.transform = `translate3d(${-off}px,${off}px,${-off}px)`;
   w.append(outer, inner);
@@ -955,38 +1002,7 @@ function buildTank() {
 $('#xRange').oninput = () => { buildTank(); SFX.tick(); };
 buildTank();
 
-const rubikView = view3D('rubikScene', 'rubikWorld', -26, 38, 200);
-let peeled = false, rubikCubes = [];
-const RFACE = { right: '#EF4444', left: '#F97316', top: '#FFFFFF', bottom: '#FACC15', front: '#22C55E', back: '#3B82F6' };
-function buildRubik() {
-  const n = +$('#nRange').value, T = 240, s = T / n, c = (n - 1) / 2; $('#nOut').textContent = n;
-  const w = rubikView.world; w.innerHTML = ''; rubikCubes = []; peeled = false; $('#peelBtn').innerHTML = '<svg class="ic"><use href="#i-palette"/></svg> Bóc lớp sơn';
-  for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) for (let k = 0; k < n; k++) {
-    const outer = [i, j, k].some(v => v === 0 || v === n - 1);
-    const onSurf = { right: i === n - 1, left: i === 0, bottom: j === n - 1, top: j === 0, front: k === n - 1, back: k === 0 };
-    const b = makeBox(s - 4, s - 4, s - 4, (f, nm) => {
-      f.style.borderRadius = '6px';
-      f.style.background = outer ? (onSurf[nm] ? RFACE[nm] : '#2D2440') : '#FFF4D6';
-      if (!outer) { f.style.border = '2px solid #FF4F9A'; }
-    });
-    const pos = [(i - c) * s, (j - c) * s, (k - c) * s];
-    const m = Math.max(Math.abs(i - c), Math.abs(j - c), Math.abs(k - c)) || 1;
-    b.home = `translate3d(${pos[0]}px,${pos[1]}px,${pos[2]}px)`;
-    b.far = `translate3d(${pos[0] + (i - c) / m * 100}px,${pos[1] + (j - c) / m * 100}px,${pos[2] + (k - c) / m * 100}px)`;
-    b.outer = outer; b.style.transform = b.home; w.appendChild(b); rubikCubes.push(b);
-  }
-  const core = Math.max(0, n - 2) ** 3;
-  $('#rAll').textContent = n ** 3; $('#rCore').textContent = core; $('#rPaint').textContent = n ** 3 - core; $('#rForm').textContent = (6 * n * n - 12 * n + 8) + ' ✓';
-}
-$('#nRange').oninput = () => { buildRubik(); SFX.tick(); };
-$('#peelBtn').onclick = () => {
-  peeled = !peeled; $('#peelBtn').innerHTML = peeled ? '<svg class="ic"><use href="#i-magnet"/></svg> Ghép lại' : '<svg class="ic"><use href="#i-palette"/></svg> Bóc lớp sơn';
-  rubikCubes.forEach((b, idx) => { if (!b.outer) return; setTimeout(() => { b.style.transform = peeled ? b.far : b.home; $$('.face', b).forEach(f => f.style.opacity = peeled ? '.22' : '1'); }, (idx % 9) * 40); });
-  SFX.ok(); if (peeled) { const r = $('#rubikScene').getBoundingClientRect(); setTimeout(() => burst(r.left + r.width / 2, r.top + r.height / 2, 60, 6), 700); }
-};
-buildRubik();
-
-/* ===================== CHẶNG 5: bó hoa, bảng vàng, lời chúc ===================== */
+/* ===================== CHẶNG 4: bó hoa, bảng vàng, lời chúc ===================== */
 function renderBouquet() {
   const picked = new Set(S.order), cx = 200, by = 330; let stems = '', heads = '';
   const rows = [[4, 115], [5, 172], [6, 228]], slots = [];
@@ -1020,7 +1036,14 @@ const WISH_COLORS = ['#FF4F9A', '#8B5CF6', '#FF8A3D', '#14B8A6', '#38BDF8', '#E6
 function renderWishes() { $('#board').innerHTML = S.wishes.slice(-14).map((w, i) => `<div class="wish" style="background:${WISH_COLORS[i % 6]};transform:rotate(${(i % 5 - 2) * 1.5}deg)"><svg class="ic"><use href="#i-letter"/></svg> ${w.replace(/</g, '&lt;')}</div>`).join(''); }
 $('#wishBtn').onclick = () => { const v = $('#wishInput').value.trim(); if (!v) return; S.wishes.push(v); save(); renderWishes(); $('#wishInput').value = ''; SFX.ok(); const r = $('#board').getBoundingClientRect(); burst(r.left + r.width / 2, r.top + 30, 50, 6); };
 $('#wishInput').addEventListener('keydown', e => { if (e.key === 'Enter') $('#wishBtn').click(); });
-$('#resetBtn').onclick = () => { if (confirm('Xoá toàn bộ điểm, hoa đã hái và lời chúc để chơi lại từ đầu?')) { const names = S.teams.map(t => t.name); S = defState(); S.teams.forEach((t, i) => t.name = names[i]); save(); renderAll(); go(0); } };
+// Xoá toàn bộ tiến độ (điểm, hoa đã hái, lời chúc, đồng hồ), giữ lại tên các nhóm
+function resetProgress() {
+  if (!confirm('Xoá toàn bộ điểm, hoa đã hái và lời chúc để chơi lại từ đầu?')) return;
+  const names = S.teams.map(t => t.name); closeModal(); resetTimer();
+  S = defState(); S.teams.forEach((t, i) => t.name = names[i]); save(); renderAll(); go(0);
+}
+$('#resetBtn').onclick = resetProgress;
+$('#resetTop').onclick = resetProgress;
 
 /* ===================== KHỞI ĐỘNG ===================== */
 function renderAll() { renderTeams(); renderTeamButtons(); renderGarden(); renderWishes(); }
