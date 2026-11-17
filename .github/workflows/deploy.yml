@@ -27,6 +27,9 @@ jobs:
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Build graphics levels (/v1 /v2 /v3)
+        run: for i in 1 2 3; do mkdir -p v$i; cp index.html v$i/index.html; done
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hái Hoa Tặng Thầy Cô – Toán 8 – Luyện tập chung (Bài 7, Bài 8)</title>
+<script>
+/* Mức đồ hoạ: / = đầy đủ, /v1 /v2 /v3 = nhẹ dần (cho TV/máy yếu). Có thể ép bằng ?v=2 */
+var GFX = (function () { var m = location.pathname.match(/\/v(\d)\/?(index\.html)?$/), q = location.search.match(/[?&]v=(\d)/); var n = +((q || m || [])[1] || 0); return Math.max(0, Math.min(3, n)); })();
+var ROOT = /\/v\d\/?(index\.html)?$/.test(location.pathname) ? '../' : '';
+for (var gi = 1; gi <= GFX; gi++) document.documentElement.classList.add('g' + gi);
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Dancing+Script:wght@700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -307,6 +313,22 @@ video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
 .podium{height:auto;min-height:9rem;padding-top:2.2rem;flex:none}
 .podium .pc{position:relative}
 .crown{position:absolute;top:-2.3rem;left:50%;margin-left:-1rem;font-size:2rem;line-height:1}
+/* ---------- Mức đồ hoạ nhẹ (/v1 /v2 /v3) ---------- */
+/* v1: bỏ làm mờ kính + đốm nền mờ + bóng chữ tiêu đề */
+.g1 .blobs{display:none}
+.g1 .topbar,.g1 .teambar,.g1 .card,.g1 .modal{backdrop-filter:none;-webkit-backdrop-filter:none}
+.g1 .topbar,.g1 .teambar{background:rgba(255,255,255,.94)}
+.g1 .card{background:rgba(255,255,255,.93)}
+.g1 .hero h1{filter:none;animation:none}
+/* v2: dừng các chuyển động trang trí lặp vô hạn, bỏ filter */
+.g2 .brand svg:not(.ic),.g2 .hcube,.g2 .floaty,.g2 .crown,.g2 .center,.g2 .fl svg:not(.ic),.g2 .fly svg:not(.ic),.g2 .aq .weed,.g2 .aq .ray,.g2 #bouquet g{animation:none!important}
+.g2 .fly,.g2 .aq .bub{display:none}
+.g2 .fish{filter:none!important}
+.g2 .btn .ic,.g2 .vbtn .ic,.g2 .hface .ic.big{filter:none}
+/* v3: cá đứng yên, bỏ mọi bóng đổ và hiệu ứng chuyển */
+.g3 .fish{animation-play-state:paused!important}
+.g3 *,.g3 *::before,.g3 *::after{box-shadow:none!important;text-shadow:none!important;transition:none!important}
+.g3 .f-top,.g3 .f-bottom,.g3 .f-left,.g3 .f-right,.g3 .f-back{filter:none}
 </style>
 </head>
 <body>
@@ -466,11 +488,11 @@ video.player{width:100%;border-radius:20px;background:#000;max-height:72vh}
    cạnh file này, đúng tên dưới đây. Nút "<svg class="ic"><use href="#i-play"/></svg> Video" chỉ hiện khi có file.
    ========================================================= */
 const VIDEOS = {
-  intro:    'videos/01-mo-dau-tri-an-20-11.mp4',
-  mindmap:  'videos/02-bong-hoa-7-canh.mp4',
-  garden:   'videos/04-vuon-hoa-tri-an.mp4',
-  aquarium: 'videos/05-be-ca.mp4',
-  ending:   'videos/06-tri-an-ket-thuc.mp4',
+  intro:    ROOT + 'videos/01-mo-dau-tri-an-20-11.mp4',
+  mindmap:  ROOT + 'videos/02-bong-hoa-7-canh.mp4',
+  garden:   ROOT + 'videos/04-vuon-hoa-tri-an.mp4',
+  aquarium: ROOT + 'videos/05-be-ca.mp4',
+  ending:   ROOT + 'videos/06-tri-an-ket-thuc.mp4',
 };
 
 const TEACHER = 'Thầy Cô';
@@ -581,14 +603,15 @@ const Music = (() => {
 
 /* ===================== HIỆU ỨNG HẠT: cánh hoa nền + pháo giấy ===================== */
 const bg = $('#bgfx'), bgc = bg.getContext('2d'), fx = $('#fx'), fxc = fx.getContext('2d');
-function resizeCanvas() { [bg, fx].forEach(c => { c.width = innerWidth * devicePixelRatio; c.height = innerHeight * devicePixelRatio; c.getContext('2d').setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0); }); }
+function resizeCanvas() { [bg, fx].forEach(c => { const d = GFX ? 1 : devicePixelRatio; c.width = innerWidth * d; c.height = innerHeight * d; c.getContext('2d').setTransform(d, 0, 0, d, 0, 0); }); }
 resizeCanvas(); addEventListener('resize', resizeCanvas);
 const PETAL_COLORS = ['#FFB3D6', '#FF8CC6', '#FFD1E6', '#E9D5FF', '#FFE08A'];
-const petals = Array.from({ length: 28 }, () => newPetal(true));
+const petals = Array.from({ length: [28, 12, 0, 0][GFX] }, () => newPetal(true));
 function newPetal(any) { return { x: Math.random() * innerWidth, y: any ? Math.random() * innerHeight : -20, s: 6 + Math.random() * 9, vy: .35 + Math.random() * .7, vx: -.3 + Math.random() * .6, r: Math.random() * 6, vr: -.02 + Math.random() * .04, c: PETAL_COLORS[Math.random() * 5 | 0], ph: Math.random() * 6 }; }
 function drawPetal(ctx, p) { ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.beginPath(); ctx.moveTo(0, -p.s); ctx.bezierCurveTo(p.s, -p.s / 2, p.s * .6, p.s, 0, p.s); ctx.bezierCurveTo(-p.s * .6, p.s, -p.s, -p.s / 2, 0, -p.s); ctx.fill(); ctx.restore(); }
 let parts = [];
 function burst(x, y, n = 120, power = 9) {
+  n = Math.round(n * [1, .8, .5, .3][GFX]);
   const cols = ['#FF4F9A', '#8B5CF6', '#FFC93C', '#14B8A6', '#38BDF8', '#FF8A3D'];
   for (let i = 0; i < n; i++) {
     const a = Math.random() * Math.PI * 2, v = power * (.4 + Math.random());
@@ -596,8 +619,12 @@ function burst(x, y, n = 120, power = 9) {
   }
 }
 function heart(ctx, s) { ctx.beginPath(); ctx.moveTo(0, s * .35); ctx.bezierCurveTo(-s, -s * .3, -s * .4, -s, 0, -s * .4); ctx.bezierCurveTo(s * .4, -s, s, -s * .3, 0, s * .35); ctx.fill(); }
+let fxDirty = false;
 function loop() {
-  bgc.clearRect(0, 0, innerWidth, innerHeight);
+  requestAnimationFrame(loop);
+  if (!petals.length && !parts.length && !fxDirty) return;
+  if (petals.length) bgc.clearRect(0, 0, innerWidth, innerHeight);
+  fxDirty = parts.length > 0;
   petals.forEach((p, i) => { p.ph += .02; p.y += p.vy; p.x += p.vx + Math.sin(p.ph) * .4; p.r += p.vr; if (p.y > innerHeight + 20) petals[i] = newPetal(false); bgc.globalAlpha = .7; drawPetal(bgc, p); });
   fxc.clearRect(0, 0, innerWidth, innerHeight);
   parts = parts.filter(p => p.life-- > 0 && p.y < innerHeight + 40);
@@ -607,7 +634,6 @@ function loop() {
     if (p.k === 'rect') fxc.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2); else if (p.k === 'heart') heart(fxc, p.s); else { fxc.restore(); drawPetal(fxc, p); return; }
     fxc.restore();
   });
-  requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);
 
@@ -870,7 +896,7 @@ function makeBox(w, h, d, faceFn) {
 // Bộ điều khiển xoay bằng kéo chuột cho mỗi cảnh 3D
 const views = {};
 function view3D(sceneId, worldId, rx = -24, ry = 35, size = 300) {
-  const v = { rx, ry, scene: $('#' + sceneId), world: $('#' + worldId), auto: true, k: 1, size, drag: false };
+  const v = { rx, ry, scene: $('#' + sceneId), world: $('#' + worldId), auto: GFX < 2, k: 1, size, drag: false };
   v.apply = () => v.world.style.transform = `scale3d(${v.k},${v.k},${v.k}) rotateX(${v.rx}deg) rotateY(${v.ry}deg)`;
   let px, py;
   v.scene.addEventListener('pointerdown', e => { v.drag = true; px = e.clientX; py = e.clientY; v.scene.setPointerCapture(e.pointerId); });
